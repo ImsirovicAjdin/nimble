@@ -1,0 +1,45 @@
+/* #########################################################*/
+/* 6. GRIDS */
+/* #########################################################*/
+
+/* 6.1. don't overthink it grids*/
+/*
+<div class="flex-grid">
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+</div>
+*/
+/* these two classes support any number of columns and they are automatically equal and flexible! */
+.flex-grid {
+    display: flex;
+}
+.col {
+    flex: 1;
+}
+/* wanna have them break into a column for small screens? Easy: */
+@media (max-width: 520px) {
+    .flex-grid {
+        display: block;
+    }
+}
+/* need gutters? You could add margins to the columns. You could add padding to the columns. I like the idea
+of using justification to create the columns, like: */
+.flex-grid-thirds {
+    display: flex;
+    justify-content: space-between;
+}
+.flex-grid-thirds .col {
+    width: 32%;
+}
+// #################################################################
+// 6.2 float-based grids
+// #################################################################
+
+// #################################################################
+// 6.3 23-column grids
+// #################################################################
+
+// #################################################################
+// 6.4 ???
+// #################################################################

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body class="font-family-arial">
+  <div class="display-flex background-color-yellow color-white justify-content-center">
+      <div class="display-inline-block width50p">
+          <div class="padding15 margin10 width50pX background-color-tomato border-color-green border-style-solid border-width10" style="">
+              lorem ipsum 1
+          </div>
+          <div class="padding15 margin10 width50pX background-color-salmon ">
+              lorem ipsum 2
+          </div>
+      </div>
+      <div class="display-inline-block width25p">
+          <div class="padding15 margin10 width50p background-color-orange ">
+              lorem ipsum 3
+          </div>
+          <div class="padding15 margin10 width50p background-color-olive ">
+              lorem ipsum 4
+          </div>
+      </div>
+  </div>
+  
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+<script>
+/*
+$('._0').each(function() {
+var that = $(this);
+var count = 0;
+while(count<30) {
+  var initialTime = new Date();
+  var test = initialTime.getTime();
+  while (new Date() <  test + 500) {
+    console.log(count);
+  }
+  count++;
+  that.addClass( '_' + count);
+  }
+});
+*/
+
+// http://www.jstips.co/en/javascript/implementing-asynchronous-loops/
+function runTest1() {
+$('._0').each(function() {
+  for (let i=0; i<30; i++) {
+    var that = $(this);
+    setTimeout(function(){
+      console.log('Testing class: ' + '_' + i);
+      that.attr('class','');
+      that.addClass( '_' + i);
+    }, 5000 * (i+1));
+  }
+});
+}
+
+
+/*
+for (var i = 1; i < 5; i++) {
+timeout(i); 
+}
+function timeout(i){
+setTimeout(() => console.log(i), 3000);
+}
+
+
+$('_0').each(function() {
+var that = $(this);
+for (var i=0; i < 30; i++) {
+  (function(index) {
+    console.log("_" + count + " class added");
+  })(i);
+}
+});
+
+var num_steps = 30;
+var cur_step = 1;
+var that = $('_0');
+var timer = setTimeout( function(){
+that.addClass( '_' + cur_step);
+cur_step += 1;
+if ( cur_step > num_steps ) {
+  clearInterval( timer );
+}
+}, 1000);
+timer();
+*/
+</script>
+
+
+</body>
+
+<script
+src="https://code.jquery.com/jquery-3.3.1.js"
+integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+crossorigin="anonymous"></script>
+<script>
+/*
+$('._0').each(function() {
+  var that = $(this);
+  var count = 0;
+  while(count<30) {
+    var initialTime = new Date();
+    var test = initialTime.getTime();
+    while (new Date() <  test + 500) {
+      console.log(count);
+    }
+    count++;
+    that.addClass( '_' + count);
+    }
+});
+*/
+
+// http://www.jstips.co/en/javascript/implementing-asynchronous-loops/
+function runTest1() {
+  $('._0').each(function() {
+    for (let i=0; i<30; i++) {
+      var that = $(this);
+      setTimeout(function(){
+        console.log('Testing class: ' + '_' + i);
+        that.attr('class','');
+        that.addClass( '_' + i);
+      }, 5000 * (i+1));
+    }
+  });
+}
+
+
+/*
+for (var i = 1; i < 5; i++) {
+  timeout(i); 
+}
+function timeout(i){
+  setTimeout(() => console.log(i), 3000);
+}
+
+
+$('_0').each(function() {
+  var that = $(this);
+  for (var i=0; i < 30; i++) {
+    (function(index) {
+      console.log("_" + count + " class added");
+    })(i);
+  }
+});
+
+var num_steps = 30;
+var cur_step = 1;
+var that = $('_0');
+var timer = setTimeout( function(){
+  that.addClass( '_' + cur_step);
+  cur_step += 1;
+  if ( cur_step > num_steps ) {
+    clearInterval( timer );
+  }
+}, 1000);
+timer();
+*/
+</script>
+</body>
+
+</html>

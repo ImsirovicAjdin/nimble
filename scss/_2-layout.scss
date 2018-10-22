@@ -1,0 +1,794 @@
+/* 2. layout (structure) - display, float, flexbox 
+// layout display       .ld-*   b ib i 
+//                              f if g ig
+//                              t it tcap tcell tcol tcolg tfg tr trg
+//                              box ibox c flow-r li
+//                              inh ini uns non
+// layout float         .lf-*   l r n inh ini uns
+// layout flex parent   .lfp-*  fdc fdcr fdr fdrr fwn fww fwwr jcc jcfs jcfe jcsa jcsb jcs aib aic aifs aife ais acc acfs acfe acsa acsb acs
+// layout flex child    .lfc-*  o0..o9 fg1..fg10 fba fb1..fb101 asa asb asc asfs asfe ass
+// layout overflow      .lo-*   lo-v lo-h lo-s lo-a
+
+// layout position
+.lp - position: a,r,static,f,sticky 
+// layout sides
+.ls - sides: t r b l -1920 to 1920 in px
+// layout's stacking order (z-index)
+/* #########################################################*/
+/* DISPLAY*/
+/* #########################################################*/
+.display-block {
+    display: block;
+}
+.display-inline-block {
+    display: inline-block;
+}
+.display-inline {
+    display: inline;
+}
+.display-flex {
+    display: flex;
+}
+.display-inline-flex {
+    display: inline-flex;
+}
+.display-grid {
+    display: grid;
+}
+.display-inline-grid {
+    display: inline-grid;
+}
+.display-table {
+    display: table;
+}
+.display-inline-table {
+    display: inline-table;
+}
+.display-table-caption {
+    display: table-caption;
+}
+.display-table-cell {
+    display: table-cell;
+}
+.display-table-column {
+    display: table-column;
+}
+.display-table-column-group {
+    display: table-column-group;
+}
+.display-table-footer-group {
+    display: table-footer-group;
+}
+.table-header-group {
+    display: table-header-group;
+}
+.display-table-row {
+    display: table-row;
+}
+.display-table-row-group {
+    display: table-row-group;
+}
+.display-webkit-box {
+    display: -webkit-box;
+}
+.display-webkit-inline-box { 
+    display: -webkit-inline-box;
+}
+.display-contents {
+    display: contents;
+}
+.display-flow-root {
+    display: flow-root;
+}
+.display-list-item {
+    display: list-item;
+}
+.display-inherit {
+    display: inherit;
+}
+.display-initial {
+    display: initial;
+}
+.display-unset {
+    display: unset;
+}
+.display-none {
+    display: none;
+}
+/* ############################################ */
+/* FLOAT */
+/* ############################################ */
+.float-left {
+    float: left;
+}
+.float-right {
+    float: right;
+}
+.float-none {
+    float: none;
+}
+.float-inherit {
+    float: inherit;
+}
+.float-initial {
+    float: initial;
+}
+.float-unset {
+    float: unset;
+}
+.clear-none {
+    clear: none;
+}
+.clear-left {
+    clear: left;
+}
+.clear-right {
+    clear: right;
+}
+.clear-both {
+    clear: both;
+}
+.clear-inline-start {
+    clear: inline-start;
+}
+.clear-inline-end {
+    clear: inline-end;
+}
+.clear-inherit {
+    clear: inherit;
+}
+.clear-initial {
+    clear: initial;
+}
+.clear-unset {
+    clear: unset;
+}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+/* ############################################ */
+/* FLEXBOX */
+/* ############################################ */
+//.layout-flex-parent-flex-direction-column,
+.flex-direction-column {
+    flex-direction: column;
+}
+//.layout-flex-parent-flex-direction-column-reverse,
+.flex-direction-column-reverse {
+    flex-direction: column-reverse;
+}
+//.layout-flex-parent-flex-direction-row,
+.flex-direction-row {
+    flex-direction: row;
+}
+//.layout-flex-parent-flex-direction-row-reverse,
+.flex-direction-row-reverse {
+    flex-direction: row-reverse;
+}
+//.layout-flex-parent-flex-wrap-nowrap,
+.flex-wrap-nowrap {
+    flex-wrap: nowrap;
+}
+//.layout-flex-parent-flex-wrap-wrap,
+.flex-wrap-wrap {
+    flex-wrap: wrap;
+}
+//.layout-flex-parent-flex-wrap-wrap-reverse,
+.flex-wrap-wrap-reverse {
+    flex-wrap: wrap-reverse;
+}
+//.layout-flex-parent-justify-content-center,
+.justify-content-center {
+    justify-content: center;
+}
+//.layout-flex-parent-justify-content-flex-start,
+.justify-content-flex-start {
+    justify-content: flex-start;
+}
+//.layout-flex-parent-justify-content-flex-end,
+.justify-content-flex-end {
+    justify-content: flex-end;
+}
+//.layout-flex-parent-justify-content-space-around,
+.justify-content-space-around {
+    justify-content: space-around;
+}
+//.layout-flex-parent-justify-content-space-between,
+.justify-content-space-between {
+    justify-content: space-between;
+}
+//.layout-flex-parent-justify-content-stretch,
+.justify-content-stretch {
+    justify-content: stretch;
+}
+//.layout-flex-parent-align-items-baseline,
+.align-items-baseline {
+    align-items: baseline;
+ }
+ //.layout-flex-parent-align-items-center,
+ .align-items-center {
+    align-items: center;
+}
+//.layout-flex-parent-align-items-flex-start,
+.align-items-flex-start {
+    align-items: flex-start;
+}
+//.layout-flex-parent-align-items-flex-end,
+.align-items-flex-end {
+    align-items: flex-end;
+}
+//.layout-flex-parent-align-items-stretch,
+.align-items-stretch {
+    align-items: stretch;
+}
+//.layout-flex-parent-align-content-center,
+.align-content-center {
+    align-content: center;
+}
+//.layout-flex-parent-align-content-flex-start,
+.align-content-flex-start {
+    align-content: flex-start;
+}
+//.layout-flex-parent-align-content-flex-end,
+.align-content-flex-end {
+    align-content: flex-end;
+}
+//.layout-flex-parent-align-content-space-around,
+.align-content-space-around {
+    align-content: space-around;
+}
+//.layout-flex-parent-align-content-space-between,
+.align-content-space-between {
+    align-content: space-between;
+}
+//.layout-flex-parent-align-content-stretch,
+.align-content-stretch {
+    align-content: stretch;
+}
+
+
+@mixin layoutFlexChildOrder() {
+    @for $i from 0 through 20 {
+        //.layout-flex-child-order#{$i},
+        .order#{$i} {
+            order: #{$i};
+        }
+    }
+}
+@include layoutFlexChildOrder();
+
+@mixin layoutFlexChildFlexGrow() {
+    @for $i from 0 through 20 {
+        //.layout-flex-child-flex-grow#{$i},
+        .flex-grow#{$i} {
+            flex-grow: #{$i};
+        }
+    }
+}
+@include layoutFlexChildFlexGrow();
+
+//.layout-flex-child-flex-basis-auto,
+.flex-basis-auto {
+    flex-basis: auto;
+}
+
+@mixin layoutFlexChildFlexBasis() {
+    @for $i from 1 through 50 {
+        $val: #{$i}px;
+        @if $i > 0 {
+            .flex-basis#{$i} {
+                flex-basis: $val;
+            }
+        }
+    }
+    @for $i from 5 through 192 {
+        $val0: #{$i}unquote("0");
+        $val1: #{$i}unquote("0px");
+        @if $i > 5 {
+            .flex-basis#{$val0} {
+                flex-basis: $val1;
+            }
+        }
+    }
+}
+@include layoutFlexChildFlexBasis();
+
+
+//.layout-flex-child-align-self-auto,
+.align-self-auto {
+    align-self: auto;
+}
+//.layout-flex-child-align-self-baseline,
+.align-self-baseline {
+    align-self: baseline;
+}
+//.layout-flex-child-align-self-center,
+.align-self-center {
+    align-self: center;
+}
+//.layout-flex-child-align-flex-start,
+.align-self-flex-start {
+    align-self: flex-start;
+}
+//.layout-flex-child-align-self-flex-end,
+.align-self-flex-end {
+    align-self: flex-end;
+}
+//.layout-flex-child-align-self-stretch,
+.align-self-stretch {
+    align-self: stretch;
+}
+//.layout-overflow-visible,
+.overflow-visible {
+    overflow: visible; 
+}
+//.layout-overflow-hidden,
+.overflow-hidden {
+    overflow: hidden;
+}
+//.layout-overflow-scroll,
+.overflow-scroll {
+    overflow: scroll;
+}
+//.layout-overflow-auto,
+.overflow-auto {
+    overflow: auto;
+}
+//.layout-overflow-inherit,
+.overflow-inherit {
+    overflow: inherit;
+}
+//.layout-overflow-initial,
+.overflow-initial {
+    overflow: initial;
+}
+//.layout-overflow-unset,
+.overflow-unset {
+    overflow: unset;
+}
+
+//.layout-overflow-x-visible,
+.overflow-x-visible {
+    overflow: visible; 
+}
+//.layout-overflow-x-hidden,
+.overflow-x-hidden {
+    overflow: hidden;
+}
+//.layout-overflow-x-scroll,
+.overflow-x-scroll {
+    overflow: scroll;
+}
+//.layout-overflow-x-auto,
+.overflow-x-auto {
+    overflow: auto;
+}
+//.layout-overflow-x-inherit,
+.overflow-x-inherit {
+    overflow: auto;
+}
+//.layout-overflow-x-initial,
+.overflow-x-initial {
+    overflow: auto;
+}
+//.layout-overflow-x-unset,
+.overflow-x-unset {
+    overflow: auto;
+}
+
+
+//.layout-overflow-y-visible,
+.overflow-y-visible {
+    overflow: visible; 
+}
+//.layout-overflow-y-hidden,
+.overflow-y-hidden {
+    overflow: hidden;
+}
+//.layout-overflow-y-scroll,
+.overflow-y-scroll {
+    overflow: scroll;
+}
+//.layout-overflow-y-auto,
+.overflow-y-auto {
+    overflow: auto;
+}
+//.layout-overflow-y-inherit,
+.overflow-y-inherit {
+    overflow: auto;
+}
+//.layout-overflow-y-initial,
+.overflow-y-initial {
+    overflow: auto;
+}
+//.layout-overflow-y-unset,
+.overflow-y-unset {
+    overflow: auto;
+}
+
+// layout position
+// .lp - position: a,r,static,f,sticky 
+//.layout-position-absolute,
+.position-absolute {
+    position: absolute;
+}
+//.layout-position-relative,
+.position-relative {
+    position: relative;
+}
+//.layout-position-static,
+.position-static {
+    position: static;
+}
+//.layout-position-fixed,
+.position-fixed {
+    position: fixed;
+}
+//.layout-position-sticky,
+.position-sticky {
+    position: sticky;
+}
+// layout sides
+// .ls - sides: t r b l -1920 to 1920
+// units of measure:
+// SCREEN 
+// px, %, cm, em, pt, ex, in, mm, pc, vh, vw, vmin, vmax
+// % - defines a measurement as a percentage relative to another value, typically an enclosing element
+// em - A relative measurement for the height of a font in em spaces. Because an em unit is equivalent to the size of a given font, if you assign a font to 12pt, each "em" unit would be 12pt; thus, 2em would be 24pt
+// rem - "root em", unlike the em, which may be different for each element, the rem is constant throughout the document. E.g. to give p and h1 elements the same left margin, compare this pre-2013 style sheet:
+    // p { margin-left: 1em }
+    // h1 { font-size: 3em; margin-left: 0.333em }
+    // ...with the new version:
+    // p { margin-left: 1rem }
+    // h1 { font-size: 3em; margin-left: 1rem }
+// ex - measurement relative to a font's x-height. The x-height is determined by the height of the font's lowercase letter x
+// vh - 1% of viewport height
+// vw - 1% of viewport width
+// vmin - 1vw or 1vh, whichever is smaller
+// vmax - 1vw or 1vh, whichever is bigger
+// PRINT
+// in - inches
+// mm - millimeters
+// cm - centimeters
+// pt - points; a point is 1/72nd of an inch
+// pc - picas; 1pc = 12pt; i.e there are 6 picas in an inch
+// PRINT & SCREEN
+// em,px,ex,%, (rem?)
+// https://www.w3.org/Style/Examples/007/units.en.html
+@mixin layoutSidesInPixels {
+    @for $i from -192 through 192 {
+      $val: #{$i}unquote("0px");
+          @if $i < -10 or $i > 10 {
+              //.layout-sides-top#{$i},
+              .top#{$val} {
+                  top: #{$val};
+              }
+              //.layout-sides-right#{$i},
+              .right#{$val} {
+                  right: #{$val};
+              }
+              //.layout-sides-bottom#{$i},
+              .bottom#{$val} {
+                  bottom: #{$val};
+              }
+              //.layout-sides-left#{$i},
+              .left#{$val} {
+                  left: #{$val};
+              }
+          }    
+      }
+    @for $i from -100 through 100 {
+        //.layout-sides-top#{$i},
+        .top#{$i} {
+            top: #{$i}px;
+        }
+        //.layout-sides-right#{$i},
+        .right#{$i} {
+            right: #{$i}px;
+        }
+        //.layout-sides-bottom#{$i},
+        .bottom#{$i} {
+            bottom: #{$i}px;
+        }
+        //.layout-sides-left#{$i},
+        .left#{$i} {
+            left: #{$i}px;
+        }      
+    }
+}
+@include layoutSidesInPixels;
+
+@mixin layoutSidesInPercents() {
+    @for $i from 0 through 20 {
+        $val: #{$i}unquote("%");
+        $val2: #{$i}unquote("p");
+        @if $i > 0 {
+          //.layout-sides-top#{$val2},
+          .top#{$val2} {
+              top: $val;
+          }
+          //.layout-sides-right#{$val2},
+          .right#{$val2} {
+              right: $val;
+          }
+          //.layout-sides-bottom#{$val2},
+          .bottom#{$val2} {
+              bottom: $val;
+          }
+          //.layout-sides-left#{$val2},
+          .left#{$val2} {
+              left: $val;
+          }
+        }
+    }
+    @for $i from 2 through 10 {
+        $val: #{$i}unquote("0p");
+        $val3: #{$i}unquote("0%");
+        @if $i >= 2 {
+            //.layout-sides-top#{$i},
+              .top#{$val} {
+                top: #{$val3};
+            }
+            //.layout-sides-right#{$i},
+            .right#{$val} {
+                right: #{$val3};
+            }
+            //.layout-sides-bottom#{$i},
+            .bottom#{$val} {
+                bottom: #{$val3};
+            }
+            //.layout-sides-left#{$i},
+            .left#{$val} {
+                left: #{$val3};
+            }
+        }
+    }
+}
+@include layoutSidesInPercents();
+
+@mixin layoutSidesInRems() {
+    @for $i from 0 through 20 {
+        $val: #{$i}unquote("rem");
+        @if $i > 0 {
+          //.layout-sides-top#{$val2},
+          .top#{$val} {
+              top: $val;
+          }
+          //.layout-sides-right#{$val2},
+          .right#{$val} {
+              right: $val;
+          }
+          //.layout-sides-bottom#{$val2},
+          .bottom#{$val} {
+              bottom: $val;
+          }
+          //.layout-sides-left#{$val2},
+          .left#{$val} {
+              left: $val;
+          }
+        }
+    }
+    @for $i from 2 through 10 {
+        $val: #{$i}unquote("0rem");
+        @if $i >= 2 {
+            //.layout-sides-top#{$i},
+              .top#{$val} {
+                top: #{$val};
+            }
+            //.layout-sides-right#{$i},
+            .right#{$val} {
+                right: #{$val};
+            }
+            //.layout-sides-bottom#{$i},
+            .bottom#{$val} {
+                bottom: #{$val};
+            }
+            //.layout-sides-left#{$i},
+            .left#{$val} {
+                left: #{$val};
+            }
+        }
+    }
+}
+@include layoutSidesInRems();
+
+@mixin layoutSidesInVhs() {
+    @for $i from 0 through 20 {
+        $val: #{$i}unquote("vh");
+        @if $i > 0 {
+          //.layout-sides-top#{$val2},
+          .top#{$val} {
+              top: $val;
+          }
+          //.layout-sides-right#{$val2},
+          .right#{$val} {
+              right: $val;
+          }
+          //.layout-sides-bottom#{$val2},
+          .bottom#{$val} {
+              bottom: $val;
+          }
+          //.layout-sides-left#{$val2},
+          .left#{$val} {
+              left: $val;
+          }
+        }
+    }
+    @for $i from 2 through 10 {
+        $val: #{$i}unquote("0vh");
+        @if $i > 2 {
+            //.layout-sides-top#{$i},
+              .top#{$val} {
+                top: #{$val};
+            }
+            //.layout-sides-right#{$i},
+            .right#{$val} {
+                right: #{$val};
+            }
+            //.layout-sides-bottom#{$i},
+            .bottom#{$val} {
+                bottom: #{$val};
+            }
+            //.layout-sides-left#{$i},
+            .left#{$val} {
+                left: #{$val};
+            }
+        }
+    }
+}
+@include layoutSidesInVhs();
+
+@mixin layoutSidesInVws() {
+    @for $i from 0 through 20 {
+        $val: #{$i}unquote("vw");
+        @if $i > 0 {
+          //.layout-sides-top#{$val2},
+          .top#{$val} {
+              top: $val;
+          }
+          //.layout-sides-right#{$val2},
+          .right#{$val} {
+              right: $val;
+          }
+          //.layout-sides-bottom#{$val2},
+          .bottom#{$val} {
+              bottom: $val;
+          }
+          //.layout-sides-left#{$val2},
+          .left#{$val} {
+              left: $val;
+          }
+        }
+    }
+    @for $i from 2 through 10 {
+        $val: #{$i}unquote("0vw");
+        @if $i > 2 {
+            //.layout-sides-top#{$i},
+              .top#{$val} {
+                top: #{$val};
+            }
+            //.layout-sides-right#{$i},
+            .right#{$val} {
+                right: #{$val};
+            }
+            //.layout-sides-bottom#{$i},
+            .bottom#{$val} {
+                bottom: #{$val};
+            }
+            //.layout-sides-left#{$i},
+            .left#{$val} {
+                left: #{$val};
+            }
+        }
+    }
+}
+@include layoutSidesInVws();
+
+
+@mixin layoutSidesInVmins() {
+    @for $i from 0 through 20 {
+        $val: #{$i}unquote("vmin");
+        @if $i > 0 {
+          //.layout-sides-top#{$val2},
+          .top#{$val} {
+              top: $val;
+          }
+          //.layout-sides-right#{$val2},
+          .right#{$val} {
+              right: $val;
+          }
+          //.layout-sides-bottom#{$val2},
+          .bottom#{$val} {
+              bottom: $val;
+          }
+          //.layout-sides-left#{$val2},
+          .left#{$val} {
+              left: $val;
+          }
+        }
+    }
+    @for $i from 2 through 10 {
+        $val: #{$i}unquote("0vmin");
+        @if $i > 2 {
+            //.layout-sides-top#{$i},
+              .top#{$val} {
+                top: #{$val};
+            }
+            //.layout-sides-right#{$i},
+            .right#{$val} {
+                right: #{$val};
+            }
+            //.layout-sides-bottom#{$i},
+            .bottom#{$val} {
+                bottom: #{$val};
+            }
+            //.layout-sides-left#{$i},
+            .left#{$val} {
+                left: #{$val};
+            }
+        }
+    }
+}
+@include layoutSidesInVmins();
+
+
+@mixin layoutSidesInVmaxs() {
+    @for $i from 0 through 20 {
+        $val: #{$i}unquote("vmax");
+        @if $i > 0 {
+          //.layout-sides-top#{$val2},
+          .top#{$val} {
+              top: $val;
+          }
+          //.layout-sides-right#{$val2},
+          .right#{$val} {
+              right: $val;
+          }
+          //.layout-sides-bottom#{$val2},
+          .bottom#{$val} {
+              bottom: $val;
+          }
+          //.layout-sides-left#{$val2},
+          .left#{$val} {
+              left: $val;
+          }
+        }
+    }
+    @for $i from 2 through 10 {
+        $val: #{$i}unquote("0vmax");
+        @if $i > 2 {
+            //.layout-sides-top#{$i},
+              .top#{$val} {
+                top: #{$val};
+            }
+            //.layout-sides-right#{$i},
+            .right#{$val} {
+                right: #{$val};
+            }
+            //.layout-sides-bottom#{$i},
+            .bottom#{$val} {
+                bottom: #{$val};
+            }
+            //.layout-sides-left#{$i},
+            .left#{$val} {
+                left: #{$val};
+            }
+        }
+    }
+}
+@include layoutSidesInVmaxs();
+
+
+@mixin zIndex {
+    @for $i from 0 through 100 {
+        $val: #{$i};
+        @if $i > 0 {
+            .z-index#{$val} {
+                z-index: $val;
+            }
+        }
+    }
+}
+@include zIndex();

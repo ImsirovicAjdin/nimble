@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Document</title>
+    <style>
+    /*
+      body {
+        width: 80%;
+        max-width: 1200px;
+        margin: 40px auto;
+        font: normal 14px/1.5 "Montserrat", "Helvetica Neue", sans-serif;
+        background: #cfd8dc;
+        color: #37474f;
+      }
+
+      figure {
+        background: whitesmoke;
+        margin: 0 0 40px;
+        box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
+      }
+
+      figcaption {
+        padding: 20px;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        list-style-type: none;
+        float: left;
+        padding-left: 15px;
+        padding-right: 15px;
+        box-sizing: border-box;
+      }
+
+      @media screen and (min-width: 400px) {
+        li {
+          width: 50%;
+        }
+
+        li:nth-of-type(2n+1) {
+          clear: left;
+        }
+      }
+
+      @media screen and (min-width: 768px) {
+        li {
+          width: 33.333%;
+        }
+
+        li:nth-of-type(2n+1) {
+          clear: none;
+        }
+
+        li:nth-of-type(3n+1) {
+          clear: left;
+        }
+      }
+
+      @media screen and (min-width: 1024px) {
+        li {
+          width: 25%;  
+        }    
+
+        li:nth-of-type(3n+1) {
+          clear: none;
+        }
+
+        li:nth-of-type(4n+1) {
+            clear: left;
+        }
+      }
+      */
+    </style>
+</head>
+  <!--
+<body class="cst-ffa">
+    <div class="flex-grid c-bgc17">
+        <div class="col">
+            <div class="u-p15 u-m10 csb-w1 csb-r5 c-bc15 csb-ssolid" style="
+">
+                lorem ipsum 1
+            </div>
+            <div class="u-p15 u-m10 ">
+                lorem ipsum 2
+            </div>
+        </div>
+        <div class="col">
+            <div class="u-p15 u-m10 ">
+                lorem ipsum 3
+            </div>
+            <div class="u-p15 u-m10 ">
+                lorem ipsum 4
+            </div>
+        </div>
+    </div>
+    <div class="flex-grid c-o0">
+        <div class="ld-b">
+            <div class="ld-b">
+                lorem ipsum 21
+            </div>
+            <div class="ld-b">
+                lorem ipsum 22
+            </div>
+        </div>
+        <div class="ld-b">
+            <div class="ld-b">
+                lorem ipsum 23
+            </div>
+            <div class="ld-b">
+                lorem ipsum 24
+            </div>
+        </div>
+    </div>
+
+
+</body>
+-->
+<body class="margin100 background-lightgray">
+<div class="
+display-table 
+float-right 
+overflow-hidden 
+position-relative 
+top200 
+right10 
+bottom50 
+left0 
+overflow-x-scroll 
+width1000 
+height1000 
+margin-left100 
+padding-top200 
+border-top-right-radius50 
+border-width20 
+border-style-dashed 
+background-color-tomato 
+color-white 
+font-family-arial 
+font-size50 
+font-weight-800 
+letter-spacing50
+">parent
+    <div class="asdf">child1
+    </div>
+    <div class="asdf">child2
+    </div>
+</div>
+
+<script
+src="https://code.jquery.com/jquery-3.3.1.js"
+integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+crossorigin="anonymous"></script>
+<script>
+/*
+$('._0').each(function() {
+  var that = $(this);
+  var count = 0;
+  while(count<30) {
+    var initialTime = new Date();
+    var test = initialTime.getTime();
+    while (new Date() <  test + 500) {
+      console.log(count);
+    }
+    count++;
+    that.addClass( '_' + count);
+    }
+});
+*/
+
+// http://www.jstips.co/en/javascript/implementing-asynchronous-loops/
+function runTest1() {
+  $('._0').each(function() {
+    for (let i=0; i<30; i++) {
+      var that = $(this);
+      setTimeout(function(){
+        console.log('Testing class: ' + '_' + i);
+        that.attr('class','');
+        that.addClass( '_' + i);
+      }, 5000 * (i+1));
+    }
+  });
+}
+
+
+/*
+for (var i = 1; i < 5; i++) {
+  timeout(i); 
+}
+function timeout(i){
+  setTimeout(() => console.log(i), 3000);
+}
+
+
+$('_0').each(function() {
+  var that = $(this);
+  for (var i=0; i < 30; i++) {
+    (function(index) {
+      console.log("_" + count + " class added");
+    })(i);
+  }
+});
+
+var num_steps = 30;
+var cur_step = 1;
+var that = $('_0');
+var timer = setTimeout( function(){
+  that.addClass( '_' + cur_step);
+  cur_step += 1;
+  if ( cur_step > num_steps ) {
+    clearInterval( timer );
+  }
+}, 1000);
+timer();
+*/
+</script>
+</body>
+
+</html>

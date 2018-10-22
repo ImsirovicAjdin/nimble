@@ -1,0 +1,2370 @@
+/* #########################################################*/
+/* 4. component theme (cs) 
+.csb - border width w0..w10, border style ssolid, sdotted, sdashed, border radius r1..r10 
+.cst - typography: font-size fs0..fs100, font-weight fw1..9, 
+                   font-style fs inh ini uns ita obl, 
+                   font-family ff t g c a tm v i cn, letter-spacing ls-10..10, 
+                   text-tranform tt u l c, text-align ta l r j, 
+                   text-overflow to e
+                   whitespace ws nw, 
+########################################################################*/
+
+// border
+// WIP
+// https://developer.mozilla.org/en-US/docs/Web/CSS/Reference
+//border-block-end
+//border-block-end-color
+//border-block-end-style
+//border-block-end-width
+//border-block-start
+//border-block-start-color
+//border-block-start-style
+//border-block-start-width
+//border-bottom
+//border-bottom-color
+//border-bottom-left-radius
+//border-bottom-right-radius
+//border-bottom-style
+//border-bottom-width
+//border-collapse
+//border-color
+//border-image
+//border-image-outset
+//border-image-repeat
+//border-image-slice
+//border-image-source
+//border-image-width
+//border-inline-end
+//border-inline-end-color
+//border-inline-end-style
+//border-inline-end-width
+//border-inline-start
+//border-inline-start-color
+//border-inline-start-style
+//border-inline-start-width
+//border-left
+//border-left-color
+//border-left-style
+//border-left-width
+//border-radius
+//border-right
+//border-right-color
+//border-right-style
+//border-right-width
+//border-spacing
+//border-style
+//border-top
+//border-top-color
+//border-top-left-radius
+//border-top-right-radius
+//border-top-style
+//border-top-width
+//border-width
+
+@mixin borderRadiusAndWidth {
+    @for $i from 0 through 100 {
+        .border-radius#{$i} {
+            border-radius: #{$i}px;
+        }
+    }
+    @for $i from 0 through 10 {
+        .border-width#{$i} {
+            border-width: #{$i}px;
+        }
+    }
+}
+@include borderRadiusAndWidth;
+
+
+@mixin borderRadiusSides($topOrBottom, $leftOrRight) {
+    @for $i from 0 through 100 {
+        .border-#{$topOrBottom}-#{$leftOrRight}-radius#{$i} {
+            $val: #{$i}px;
+            @if $topOrBottom == 'top' {
+                @if $leftOrRight == 'right' {
+                    border-top-right-radius: $val
+                } @else if $leftOrRight == 'left' {
+                    border-top-left-radius: $val
+                }
+            } @else {
+                @if $topOrBottom == 'bottom' {
+                    @if $leftOrRight == 'right' {
+                    border-bottom-right-radius: $val
+                } @else if $leftOrRight == 'left' {
+                    border-bottom-left-radius: $val
+                }
+            }
+        }
+    }
+}}
+
+//border-TOP-LEFT-radius
+@include borderRadiusSides(top,left);
+@include borderRadiusSides(top,right);
+@include borderRadiusSides(bottom,left);
+@include borderRadiusSides(bottom,right);
+
+.border-style-none {
+    border-style: none
+}
+.border-style-hidden {
+    border-style: hidden
+}
+.border-style-dotted {
+    border-style: dotted
+}
+.border-style-dashed {
+    border-style: dashed
+}
+.border-style-solid {
+    border-style: solid
+}
+.border-style-double {
+    border-style: double
+}
+.border-style-groove {
+    border-style: groove
+}
+.border-style-ridge {
+    border-style: ridge
+}
+.border-style-inset {
+    border-style: inset
+}
+.border-style-outset {
+    border-style: outset
+}
+.border-style-initial {
+    border-style: initial
+}
+.border-style-inherit {
+    border-style: inherit
+}
+
+.border-color-aliceblue {
+    border-color: aliceblue; }
+    
+    .border-color-antiquewhite {
+    border-color: antiquewhite;
+    }
+    
+    .border-color-aqua {
+    border-color: aqua; }
+    
+    .border-color-aquamarine {
+    border-color: aquamarine; }
+    
+    .border-color-azure {
+    border-color: azure; }
+    
+    .border-color-beige {
+    border-color: beige; }
+    
+    .border-color-bisque {
+    border-color: bisque; }
+    
+    .border-color-black {
+    border-color: black; }
+    
+    .border-color-blanchedalmond {
+    border-color: blanchedalmond; }
+    
+    .border-color-blue {
+    border-color: blue; }
+    
+    .border-color-blueviolet {
+    border-color: blueviolet; }
+    
+    .border-color-brown {
+    border-color: brown; }
+    
+    .border-color-burlywood {
+    border-color: burlywood; }
+    
+    .border-color-cadetblue {
+    border-color: cadetblue; }
+    
+    .border-color-chartreuse {
+    border-color: chartreuse; }
+    
+    .border-color-chocolate {
+    border-color: chocolate; }
+    
+    .border-color-coral {
+    border-color: coral; }
+    
+    .border-color-cornflowerblue {
+    border-color: cornflowerblue; }
+    
+    .border-color-cornsilk {
+    border-color: cornsilk; }
+    
+    .border-color-crimson {
+    border-color: crimson; }
+    
+    .border-color-cyan {
+    border-color: cyan; }
+    
+    .border-color-darkblue {
+    border-color: darkblue; }
+    
+    .border-color-darkgoldenrod {
+    border-color: darkgoldenrod; }
+    
+    .border-color-darkgreen {
+    border-color: darkgreen; }
+    
+    .border-color-darkgrey {
+    border-color: darkgrey; }
+    
+    .border-color-darkgray {
+    border-color: darkgray; }
+    
+    .border-color-darkcyan {
+    border-color: darkcyan; }
+    
+    .border-color-darkkhaki {
+    border-color: darkkhaki; }
+    
+    .border-color-darkmagenta {
+    border-color: darkmagenta; }
+    
+    .border-color-darkolivegreen {
+    border-color: darkolivegreen; }
+    
+    .border-color-darkorange {
+    border-color: darkorange; }
+    
+    .border-color-darkorchid {
+    border-color: darkorchid; }
+    
+    .border-color-darkred {
+    border-color: darkred; }
+    
+    .border-color-darksalmon {
+    border-color: darksalmon; }
+    
+    .border-color-darkseagreen {
+    border-color: darkseagreen; }
+    
+    .border-color-darkslateblue {
+    border-color: darkslateblue; }
+    
+    .border-color-darkslategray {
+    border-color: darkslategray; }
+    
+    .border-color-darkslategrey {
+    border-color: darkslategrey; }
+    
+    .border-color-darkturquoise {
+    border-color: darkturquoise; }
+    
+    .border-color-darkviolet {
+    border-color: darkviolet; }
+    
+    .border-color-deeppink {
+    border-color: deeppink; }
+    
+    .border-color-deepskyblue {
+    border-color: deepskyblue; }
+    
+    .border-color-dimgray {
+    border-color: dimgray; }
+    
+    .border-color-dimgrey {
+    border-color: dimgrey; }
+    
+    .border-color-dodgerblue {
+    border-color: dodgerblue; }
+    
+    .border-color-firebrick {
+    border-color: firebrick; }
+    
+    .border-color-floralwhite {
+    border-color: floralwhite; }
+    
+    .border-color-forestgreen {
+    border-color: forestgreen; }
+    
+    .border-color-fuchsia {
+    border-color: fuchsia; }
+    
+    .border-color-gainsboro {
+    border-color: gainsboro; }
+    
+    .border-color-ghostwhite {
+    border-color: ghostwhite; }
+    
+    .border-color-gold {
+    border-color: gold; }
+    
+    .border-color-goldenrod {
+    border-color: goldenrod; }
+    
+    .border-color-gray {
+    border-color: gray; }
+    
+    .border-color-grey {
+    border-color: grey; }
+    
+    .border-color-green {
+    border-color: green; }
+    
+    .border-color-greenyellow {
+    border-color: greenyellow; }
+    
+    .border-color-honeydew {
+    border-color: honeydew; }
+    
+    .border-color-hotpink {
+    border-color: hotpink; }
+    
+    .border-color-indianred {
+    border-color: indianred; }
+    
+    .border-color-indigo {
+    border-color: indigo; }
+    
+    .border-color-ivory {
+    border-color: ivory; }
+    
+    .border-color-khaki {
+    border-color: khaki; }
+    
+    .border-color-lavender {
+    border-color: lavender; }
+    
+    .border-color-lavenderblush {
+    border-color: lavenderblush; }
+    
+    .border-color-lawngreen {
+    border-color: lawngreen; }
+    
+    .border-color-lemonchiffon {
+    border-color: lemonchiffon; }
+    
+    .border-color-lightblue {
+    border-color: lightblue; }
+    
+    .border-color-lightcoral {
+    border-color: lightcoral; }
+    
+    .border-color-lightcyan {
+    border-color: lightcyan; }
+    
+    .border-color-lightgoldenrodyellow {
+    border-color: lightgoldenrodyellow; }
+    
+    .border-color-lightgray {
+    border-color: lightgray; }
+    
+    .border-color-lightgrey {
+    border-color: lightgrey; }
+    
+    .border-color-lightgreen {
+    border-color: lightgreen; }
+    
+    .border-color-lightpink {
+    border-color: lightpink; }
+    
+    .border-color-lightsalmon {
+    border-color: lightsalmon; }
+    
+    .border-color-lightseagreen {
+    border-color: lightseagreen; }
+    
+    .border-color-lightskyblue {
+    border-color: lightskyblue; }
+    
+    .border-color-lightslategray {
+    border-color: lightslategray; }
+    
+    .border-color-lightslategrey {
+    border-color: lightslategrey; }
+    
+    .border-color-lightsteelblue {
+    border-color: lightsteelblue; }
+    
+    .border-color-lightyellow {
+    border-color: lightyellow; }
+    
+    .border-color-lime {
+    border-color: lime; }
+    
+    .border-color-limegreen {
+    border-color: limegreen; }
+    
+    .border-color-linen {
+    border-color: linen; }
+    
+    .border-color-magenta {
+    border-color: magenta; }
+    
+    .border-color-maroon {
+    border-color: maroon; }
+    
+    .border-color-mediumaquamarine {
+    border-color: mediumaquamarine; }
+    
+    .border-color-mediumblue {
+    border-color: mediumblue; }
+    
+    .border-color-mediumorchid {
+    border-color: mediumorchid; }
+    
+    .border-color-mediumpurple {
+    border-color: mediumpurple; }
+    
+    .border-color-mediumseagreen {
+    border-color: mediumseagreen; }
+    
+    .border-color-mediumslateblue {
+    border-color: mediumslateblue; }
+    
+    .border-color-mediumspringgreen {
+    border-color: mediumspringgreen; }
+    
+    .border-color-mediumturquoise {
+    border-color: mediumturquoise; }
+    
+    .border-color-mediumvioletred {
+    border-color: mediumvioletred; }
+    
+    .border-color-midnightblue {
+    border-color: midnightblue; }
+    
+    .border-color-mintcream {
+    border-color: mintcream; }
+    
+    .border-color-mistyrose {
+    border-color: mistyrose; }
+    
+    .border-color-moccasin {
+    border-color: moccasin; }
+    
+    .border-color-navajowhite {
+    border-color: navajowhite; }
+    
+    .border-color-navy {
+    border-color: navy; }
+    
+    .border-color-oldlace {
+    border-color: oldlace; }
+    
+    .border-color-olive {
+    border-color: olive; }
+    
+    .border-color-olivedrab {
+    border-color: olivedrab; }
+    
+    .border-color-orange {
+    border-color: orange; }
+    
+    .border-color-orangered {
+    border-color: orangered; }
+    
+    .border-color-orchid {
+    border-color: orchid; }
+    
+    .border-color-palegoldenrod {
+    border-color: palegoldenrod; }
+    
+    .border-color-palegreen {
+    border-color: palegreen; }
+    
+    .border-color-paleturquoise {
+    border-color: paleturquoise; }
+    
+    .border-color-palevioletred {
+    border-color: palevioletred; }
+    
+    .border-color-papayawhip {
+    border-color: papayawhip; }
+    
+    .border-color-peachpuff {
+    border-color: peachpuff; }
+    
+    .border-color-peru {
+    border-color: peru; }
+    
+    .border-color-pink {
+    border-color: pink; }
+    
+    .border-color-plum {
+    border-color: plum; }
+    
+    .border-color-powderblue {
+    border-color: powderblue; }
+    
+    .border-color-purple {
+    border-color: purple; }
+    
+    .border-color-rebeccapurple {
+    border-color: rebeccapurple; }
+    
+    .border-color-red {
+    border-color: red; }
+    
+    .border-color-rosybrown {
+    border-color: rosybrown; }
+    
+    .border-color-royalblue {
+    border-color: royalblue; }
+    
+    .border-color-saddlebrown {
+    border-color: saddlebrown; }
+    
+    .border-color-salmon {
+    border-color: salmon; }
+    
+    .border-color-sandybrown {
+    border-color: sandybrown; }
+    
+    .border-color-seagreen {
+    border-color: seagreen; }
+    
+    .border-color-seashell {
+    border-color: seashell; }
+    
+    .border-color-sienna {
+    border-color: sienna; }
+    
+    .border-color-silver {
+    border-color: silver; }
+    
+    .border-color-skyblue {
+    border-color: skyblue; }
+    
+    .border-color-slateblue {
+    border-color: slateblue; }
+    
+    .border-color-slategray {
+    border-color: slategray; }
+    
+    .border-color-slategrey {
+    border-color: slategrey; }
+    
+    .border-color-snow {
+    border-color: snow; }
+    
+    .border-color-springgreen {
+    border-color: springgreen; }
+    
+    .border-color-steelblue {
+    border-color: steelblue; }
+    
+    .border-color-tan {
+    border-color: tan; }
+    
+    .border-color-teal {
+    border-color: teal; }
+    
+    .border-color-thistle {
+    border-color: thistle; }
+    
+    .border-color-tomato {
+    border-color: tomato; }
+    
+    .border-color-turquoise {
+    border-color: turquoise; }
+    
+    .border-color-violet {
+    border-color: violet; }
+    
+    .border-color-wheat {
+    border-color: wheat; }
+    
+    .border-color-white {
+    border-color: white; }
+    
+    .border-color-whitesmoke {
+    border-color: whitesmoke; }
+    
+    .border-color-yellow {
+    border-color: yellow; }
+    
+    .border-color-yellowgreen {
+    border-color: yellowgreen; }
+    
+    
+    .border-top-color-aliceblue {
+    border-top-color: aliceblue; }
+    
+    .border-top-color-antiquewhite {
+    border-top-color: antiquewhite;
+    }
+    
+    .border-top-color-aqua {
+    border-top-color: aqua; }
+    
+    .border-top-color-aquamarine {
+    border-top-color: aquamarine; }
+    
+    .border-top-color-azure {
+    border-top-color: azure; }
+    
+    .border-top-color-beige {
+    border-top-color: beige; }
+    
+    .border-top-color-bisque {
+    border-top-color: bisque; }
+    
+    .border-top-color-black {
+    border-top-color: black; }
+    
+    .border-top-color-blanchedalmond {
+    border-top-color: blanchedalmond; }
+    
+    .border-top-color-blue {
+    border-top-color: blue; }
+    
+    .border-top-color-blueviolet {
+    border-top-color: blueviolet; }
+    
+    .border-top-color-brown {
+    border-top-color: brown; }
+    
+    .border-top-color-burlywood {
+    border-top-color: burlywood; }
+    
+    .border-top-color-cadetblue {
+    border-top-color: cadetblue; }
+    
+    .border-top-color-chartreuse {
+    border-top-color: chartreuse; }
+    
+    .border-top-color-chocolate {
+    border-top-color: chocolate; }
+    
+    .border-top-color-coral {
+    border-top-color: coral; }
+    
+    .border-top-color-cornflowerblue {
+    border-top-color: cornflowerblue; }
+    
+    .border-top-color-cornsilk {
+    border-top-color: cornsilk; }
+    
+    .border-top-color-crimson {
+    border-top-color: crimson; }
+    
+    .border-top-color-cyan {
+    border-top-color: cyan; }
+    
+    .border-top-color-darkblue {
+    border-top-color: darkblue; }
+    
+    .border-top-color-darkgoldenrod {
+    border-top-color: darkgoldenrod; }
+    
+    .border-top-color-darkgreen {
+    border-top-color: darkgreen; }
+    
+    .border-top-color-darkgrey {
+    border-top-color: darkgrey; }
+    
+    .border-top-color-darkgray {
+    border-top-color: darkgray; }
+    
+    .border-top-color-darkcyan {
+    border-top-color: darkcyan; }
+    
+    .border-top-color-darkkhaki {
+    border-top-color: darkkhaki; }
+    
+    .border-top-color-darkmagenta {
+    border-top-color: darkmagenta; }
+    
+    .border-top-color-darkolivegreen {
+    border-top-color: darkolivegreen; }
+    
+    .border-top-color-darkorange {
+    border-top-color: darkorange; }
+    
+    .border-top-color-darkorchid {
+    border-top-color: darkorchid; }
+    
+    .border-top-color-darkred {
+    border-top-color: darkred; }
+    
+    .border-top-color-darksalmon {
+    border-top-color: darksalmon; }
+    
+    .border-top-color-darkseagreen {
+    border-top-color: darkseagreen; }
+    
+    .border-top-color-darkslateblue {
+    border-top-color: darkslateblue; }
+    
+    .border-top-color-darkslategray {
+    border-top-color: darkslategray; }
+    
+    .border-top-color-darkslategrey {
+    border-top-color: darkslategrey; }
+    
+    .border-top-color-darkturquoise {
+    border-top-color: darkturquoise; }
+    
+    .border-top-color-darkviolet {
+    border-top-color: darkviolet; }
+    
+    .border-top-color-deeppink {
+    border-top-color: deeppink; }
+    
+    .border-top-color-deepskyblue {
+    border-top-color: deepskyblue; }
+    
+    .border-top-color-dimgray {
+    border-top-color: dimgray; }
+    
+    .border-top-color-dimgrey {
+    border-top-color: dimgrey; }
+    
+    .border-top-color-dodgerblue {
+    border-top-color: dodgerblue; }
+    
+    .border-top-color-firebrick {
+    border-top-color: firebrick; }
+    
+    .border-top-color-floralwhite {
+    border-top-color: floralwhite; }
+    
+    .border-top-color-forestgreen {
+    border-top-color: forestgreen; }
+    
+    .border-top-color-fuchsia {
+    border-top-color: fuchsia; }
+    
+    .border-top-color-gainsboro {
+    border-top-color: gainsboro; }
+    
+    .border-top-color-ghostwhite {
+    border-top-color: ghostwhite; }
+    
+    .border-top-color-gold {
+    border-top-color: gold; }
+    
+    .border-top-color-goldenrod {
+    border-top-color: goldenrod; }
+    
+    .border-top-color-gray {
+    border-top-color: gray; }
+    
+    .border-top-color-grey {
+    border-top-color: grey; }
+    
+    .border-top-color-green {
+    border-top-color: green; }
+    
+    .border-top-color-greenyellow {
+    border-top-color: greenyellow; }
+    
+    .border-top-color-honeydew {
+    border-top-color: honeydew; }
+    
+    .border-top-color-hotpink {
+    border-top-color: hotpink; }
+    
+    .border-top-color-indianred {
+    border-top-color: indianred; }
+    
+    .border-top-color-indigo {
+    border-top-color: indigo; }
+    
+    .border-top-color-ivory {
+    border-top-color: ivory; }
+    
+    .border-top-color-khaki {
+    border-top-color: khaki; }
+    
+    .border-top-color-lavender {
+    border-top-color: lavender; }
+    
+    .border-top-color-lavenderblush {
+    border-top-color: lavenderblush; }
+    
+    .border-top-color-lawngreen {
+    border-top-color: lawngreen; }
+    
+    .border-top-color-lemonchiffon {
+    border-top-color: lemonchiffon; }
+    
+    .border-top-color-lightblue {
+    border-top-color: lightblue; }
+    
+    .border-top-color-lightcoral {
+    border-top-color: lightcoral; }
+    
+    .border-top-color-lightcyan {
+    border-top-color: lightcyan; }
+    
+    .border-top-color-lightgoldenrodyellow {
+    border-top-color: lightgoldenrodyellow; }
+    
+    .border-top-color-lightgray {
+    border-top-color: lightgray; }
+    
+    .border-top-color-lightgrey {
+    border-top-color: lightgrey; }
+    
+    .border-top-color-lightgreen {
+    border-top-color: lightgreen; }
+    
+    .border-top-color-lightpink {
+    border-top-color: lightpink; }
+    
+    .border-top-color-lightsalmon {
+    border-top-color: lightsalmon; }
+    
+    .border-top-color-lightseagreen {
+    border-top-color: lightseagreen; }
+    
+    .border-top-color-lightskyblue {
+    border-top-color: lightskyblue; }
+    
+    .border-top-color-lightslategray {
+    border-top-color: lightslategray; }
+    
+    .border-top-color-lightslategrey {
+    border-top-color: lightslategrey; }
+    
+    .border-top-color-lightsteelblue {
+    border-top-color: lightsteelblue; }
+    
+    .border-top-color-lightyellow {
+    border-top-color: lightyellow; }
+    
+    .border-top-color-lime {
+    border-top-color: lime; }
+    
+    .border-top-color-limegreen {
+    border-top-color: limegreen; }
+    
+    .border-top-color-linen {
+    border-top-color: linen; }
+    
+    .border-top-color-magenta {
+    border-top-color: magenta; }
+    
+    .border-top-color-maroon {
+    border-top-color: maroon; }
+    
+    .border-top-color-mediumaquamarine {
+    border-top-color: mediumaquamarine; }
+    
+    .border-top-color-mediumblue {
+    border-top-color: mediumblue; }
+    
+    .border-top-color-mediumorchid {
+    border-top-color: mediumorchid; }
+    
+    .border-top-color-mediumpurple {
+    border-top-color: mediumpurple; }
+    
+    .border-top-color-mediumseagreen {
+    border-top-color: mediumseagreen; }
+    
+    .border-top-color-mediumslateblue {
+    border-top-color: mediumslateblue; }
+    
+    .border-top-color-mediumspringgreen {
+    border-top-color: mediumspringgreen; }
+    
+    .border-top-color-mediumturquoise {
+    border-top-color: mediumturquoise; }
+    
+    .border-top-color-mediumvioletred {
+    border-top-color: mediumvioletred; }
+    
+    .border-top-color-midnightblue {
+    border-top-color: midnightblue; }
+    
+    .border-top-color-mintcream {
+    border-top-color: mintcream; }
+    
+    .border-top-color-mistyrose {
+    border-top-color: mistyrose; }
+    
+    .border-top-color-moccasin {
+    border-top-color: moccasin; }
+    
+    .border-top-color-navajowhite {
+    border-top-color: navajowhite; }
+    
+    .border-top-color-navy {
+    border-top-color: navy; }
+    
+    .border-top-color-oldlace {
+    border-top-color: oldlace; }
+    
+    .border-top-color-olive {
+    border-top-color: olive; }
+    
+    .border-top-color-olivedrab {
+    border-top-color: olivedrab; }
+    
+    .border-top-color-orange {
+    border-top-color: orange; }
+    
+    .border-top-color-orangered {
+    border-top-color: orangered; }
+    
+    .border-top-color-orchid {
+    border-top-color: orchid; }
+    
+    .border-top-color-palegoldenrod {
+    border-top-color: palegoldenrod; }
+    
+    .border-top-color-palegreen {
+    border-top-color: palegreen; }
+    
+    .border-top-color-paleturquoise {
+    border-top-color: paleturquoise; }
+    
+    .border-top-color-palevioletred {
+    border-top-color: palevioletred; }
+    
+    .border-top-color-papayawhip {
+    border-top-color: papayawhip; }
+    
+    .border-top-color-peachpuff {
+    border-top-color: peachpuff; }
+    
+    .border-top-color-peru {
+    border-top-color: peru; }
+    
+    .border-top-color-pink {
+    border-top-color: pink; }
+    
+    .border-top-color-plum {
+    border-top-color: plum; }
+    
+    .border-top-color-powderblue {
+    border-top-color: powderblue; }
+    
+    .border-top-color-purple {
+    border-top-color: purple; }
+    
+    .border-top-color-rebeccapurple {
+    border-top-color: rebeccapurple; }
+    
+    .border-top-color-red {
+    border-top-color: red; }
+    
+    .border-top-color-rosybrown {
+    border-top-color: rosybrown; }
+    
+    .border-top-color-royalblue {
+    border-top-color: royalblue; }
+    
+    .border-top-color-saddlebrown {
+    border-top-color: saddlebrown; }
+    
+    .border-top-color-salmon {
+    border-top-color: salmon; }
+    
+    .border-top-color-sandybrown {
+    border-top-color: sandybrown; }
+    
+    .border-top-color-seagreen {
+    border-top-color: seagreen; }
+    
+    .border-top-color-seashell {
+    border-top-color: seashell; }
+    
+    .border-top-color-sienna {
+    border-top-color: sienna; }
+    
+    .border-top-color-silver {
+    border-top-color: silver; }
+    
+    .border-top-color-skyblue {
+    border-top-color: skyblue; }
+    
+    .border-top-color-slateblue {
+    border-top-color: slateblue; }
+    
+    .border-top-color-slategray {
+    border-top-color: slategray; }
+    
+    .border-top-color-slategrey {
+    border-top-color: slategrey; }
+    
+    .border-top-color-snow {
+    border-top-color: snow; }
+    
+    .border-top-color-springgreen {
+    border-top-color: springgreen; }
+    
+    .border-top-color-steelblue {
+    border-top-color: steelblue; }
+    
+    .border-top-color-tan {
+    border-top-color: tan; }
+    
+    .border-top-color-teal {
+    border-top-color: teal; }
+    
+    .border-top-color-thistle {
+    border-top-color: thistle; }
+    
+    .border-top-color-tomato {
+    border-top-color: tomato; }
+    
+    .border-top-color-turquoise {
+    border-top-color: turquoise; }
+    
+    .border-top-color-violet {
+    border-top-color: violet; }
+    
+    .border-top-color-wheat {
+    border-top-color: wheat; }
+    
+    .border-top-color-white {
+    border-top-color: white; }
+    
+    .border-top-color-whitesmoke {
+    border-top-color: whitesmoke; }
+    
+    .border-top-color-yellow {
+    border-top-color: yellow; }
+    
+    .border-top-color-yellowgreen {
+    border-top-color: yellowgreen; }
+    
+    
+    .border-right-color-aliceblue {
+    border-right-color: aliceblue; }
+    
+    .border-right-color-antiquewhite {
+    border-right-color: antiquewhite;
+    }
+    
+    .border-right-color-aqua {
+    border-right-color: aqua; }
+    
+    .border-right-color-aquamarine {
+    border-right-color: aquamarine; }
+    
+    .border-right-color-azure {
+    border-right-color: azure; }
+    
+    .border-right-color-beige {
+    border-right-color: beige; }
+    
+    .border-right-color-bisque {
+    border-right-color: bisque; }
+    
+    .border-right-color-black {
+    border-right-color: black; }
+    
+    .border-right-color-blanchedalmond {
+    border-right-color: blanchedalmond; }
+    
+    .border-right-color-blue {
+    border-right-color: blue; }
+    
+    .border-right-color-blueviolet {
+    border-right-color: blueviolet; }
+    
+    .border-right-color-brown {
+    border-right-color: brown; }
+    
+    .border-right-color-burlywood {
+    border-right-color: burlywood; }
+    
+    .border-right-color-cadetblue {
+    border-right-color: cadetblue; }
+    
+    .border-right-color-chartreuse {
+    border-right-color: chartreuse; }
+    
+    .border-right-color-chocolate {
+    border-right-color: chocolate; }
+    
+    .border-right-color-coral {
+    border-right-color: coral; }
+    
+    .border-right-color-cornflowerblue {
+    border-right-color: cornflowerblue; }
+    
+    .border-right-color-cornsilk {
+    border-right-color: cornsilk; }
+    
+    .border-right-color-crimson {
+    border-right-color: crimson; }
+    
+    .border-right-color-cyan {
+    border-right-color: cyan; }
+    
+    .border-right-color-darkblue {
+    border-right-color: darkblue; }
+    
+    .border-right-color-darkgoldenrod {
+    border-right-color: darkgoldenrod; }
+    
+    .border-right-color-darkgreen {
+    border-right-color: darkgreen; }
+    
+    .border-right-color-darkgrey {
+    border-right-color: darkgrey; }
+    
+    .border-right-color-darkgray {
+    border-right-color: darkgray; }
+    
+    .border-right-color-darkcyan {
+    border-right-color: darkcyan; }
+    
+    .border-right-color-darkkhaki {
+    border-right-color: darkkhaki; }
+    
+    .border-right-color-darkmagenta {
+    border-right-color: darkmagenta; }
+    
+    .border-right-color-darkolivegreen {
+    border-right-color: darkolivegreen; }
+    
+    .border-right-color-darkorange {
+    border-right-color: darkorange; }
+    
+    .border-right-color-darkorchid {
+    border-right-color: darkorchid; }
+    
+    .border-right-color-darkred {
+    border-right-color: darkred; }
+    
+    .border-right-color-darksalmon {
+    border-right-color: darksalmon; }
+    
+    .border-right-color-darkseagreen {
+    border-right-color: darkseagreen; }
+    
+    .border-right-color-darkslateblue {
+    border-right-color: darkslateblue; }
+    
+    .border-right-color-darkslategray {
+    border-right-color: darkslategray; }
+    
+    .border-right-color-darkslategrey {
+    border-right-color: darkslategrey; }
+    
+    .border-right-color-darkturquoise {
+    border-right-color: darkturquoise; }
+    
+    .border-right-color-darkviolet {
+    border-right-color: darkviolet; }
+    
+    .border-right-color-deeppink {
+    border-right-color: deeppink; }
+    
+    .border-right-color-deepskyblue {
+    border-right-color: deepskyblue; }
+    
+    .border-right-color-dimgray {
+    border-right-color: dimgray; }
+    
+    .border-right-color-dimgrey {
+    border-right-color: dimgrey; }
+    
+    .border-right-color-dodgerblue {
+    border-right-color: dodgerblue; }
+    
+    .border-right-color-firebrick {
+    border-right-color: firebrick; }
+    
+    .border-right-color-floralwhite {
+    border-right-color: floralwhite; }
+    
+    .border-right-color-forestgreen {
+    border-right-color: forestgreen; }
+    
+    .border-right-color-fuchsia {
+    border-right-color: fuchsia; }
+    
+    .border-right-color-gainsboro {
+    border-right-color: gainsboro; }
+    
+    .border-right-color-ghostwhite {
+    border-right-color: ghostwhite; }
+    
+    .border-right-color-gold {
+    border-right-color: gold; }
+    
+    .border-right-color-goldenrod {
+    border-right-color: goldenrod; }
+    
+    .border-right-color-gray {
+    border-right-color: gray; }
+    
+    .border-right-color-grey {
+    border-right-color: grey; }
+    
+    .border-right-color-green {
+    border-right-color: green; }
+    
+    .border-right-color-greenyellow {
+    border-right-color: greenyellow; }
+    
+    .border-right-color-honeydew {
+    border-right-color: honeydew; }
+    
+    .border-right-color-hotpink {
+    border-right-color: hotpink; }
+    
+    .border-right-color-indianred {
+    border-right-color: indianred; }
+    
+    .border-right-color-indigo {
+    border-right-color: indigo; }
+    
+    .border-right-color-ivory {
+    border-right-color: ivory; }
+    
+    .border-right-color-khaki {
+    border-right-color: khaki; }
+    
+    .border-right-color-lavender {
+    border-right-color: lavender; }
+    
+    .border-right-color-lavenderblush {
+    border-right-color: lavenderblush; }
+    
+    .border-right-color-lawngreen {
+    border-right-color: lawngreen; }
+    
+    .border-right-color-lemonchiffon {
+    border-right-color: lemonchiffon; }
+    
+    .border-right-color-lightblue {
+    border-right-color: lightblue; }
+    
+    .border-right-color-lightcoral {
+    border-right-color: lightcoral; }
+    
+    .border-right-color-lightcyan {
+    border-right-color: lightcyan; }
+    
+    .border-right-color-lightgoldenrodyellow {
+    border-right-color: lightgoldenrodyellow; }
+    
+    .border-right-color-lightgray {
+    border-right-color: lightgray; }
+    
+    .border-right-color-lightgrey {
+    border-right-color: lightgrey; }
+    
+    .border-right-color-lightgreen {
+    border-right-color: lightgreen; }
+    
+    .border-right-color-lightpink {
+    border-right-color: lightpink; }
+    
+    .border-right-color-lightsalmon {
+    border-right-color: lightsalmon; }
+    
+    .border-right-color-lightseagreen {
+    border-right-color: lightseagreen; }
+    
+    .border-right-color-lightskyblue {
+    border-right-color: lightskyblue; }
+    
+    .border-right-color-lightslategray {
+    border-right-color: lightslategray; }
+    
+    .border-right-color-lightslategrey {
+    border-right-color: lightslategrey; }
+    
+    .border-right-color-lightsteelblue {
+    border-right-color: lightsteelblue; }
+    
+    .border-right-color-lightyellow {
+    border-right-color: lightyellow; }
+    
+    .border-right-color-lime {
+    border-right-color: lime; }
+    
+    .border-right-color-limegreen {
+    border-right-color: limegreen; }
+    
+    .border-right-color-linen {
+    border-right-color: linen; }
+    
+    .border-right-color-magenta {
+    border-right-color: magenta; }
+    
+    .border-right-color-maroon {
+    border-right-color: maroon; }
+    
+    .border-right-color-mediumaquamarine {
+    border-right-color: mediumaquamarine; }
+    
+    .border-right-color-mediumblue {
+    border-right-color: mediumblue; }
+    
+    .border-right-color-mediumorchid {
+    border-right-color: mediumorchid; }
+    
+    .border-right-color-mediumpurple {
+    border-right-color: mediumpurple; }
+    
+    .border-right-color-mediumseagreen {
+    border-right-color: mediumseagreen; }
+    
+    .border-right-color-mediumslateblue {
+    border-right-color: mediumslateblue; }
+    
+    .border-right-color-mediumspringgreen {
+    border-right-color: mediumspringgreen; }
+    
+    .border-right-color-mediumturquoise {
+    border-right-color: mediumturquoise; }
+    
+    .border-right-color-mediumvioletred {
+    border-right-color: mediumvioletred; }
+    
+    .border-right-color-midnightblue {
+    border-right-color: midnightblue; }
+    
+    .border-right-color-mintcream {
+    border-right-color: mintcream; }
+    
+    .border-right-color-mistyrose {
+    border-right-color: mistyrose; }
+    
+    .border-right-color-moccasin {
+    border-right-color: moccasin; }
+    
+    .border-right-color-navajowhite {
+    border-right-color: navajowhite; }
+    
+    .border-right-color-navy {
+    border-right-color: navy; }
+    
+    .border-right-color-oldlace {
+    border-right-color: oldlace; }
+    
+    .border-right-color-olive {
+    border-right-color: olive; }
+    
+    .border-right-color-olivedrab {
+    border-right-color: olivedrab; }
+    
+    .border-right-color-orange {
+    border-right-color: orange; }
+    
+    .border-right-color-orangered {
+    border-right-color: orangered; }
+    
+    .border-right-color-orchid {
+    border-right-color: orchid; }
+    
+    .border-right-color-palegoldenrod {
+    border-right-color: palegoldenrod; }
+    
+    .border-right-color-palegreen {
+    border-right-color: palegreen; }
+    
+    .border-right-color-paleturquoise {
+    border-right-color: paleturquoise; }
+    
+    .border-right-color-palevioletred {
+    border-right-color: palevioletred; }
+    
+    .border-right-color-papayawhip {
+    border-right-color: papayawhip; }
+    
+    .border-right-color-peachpuff {
+    border-right-color: peachpuff; }
+    
+    .border-right-color-peru {
+    border-right-color: peru; }
+    
+    .border-right-color-pink {
+    border-right-color: pink; }
+    
+    .border-right-color-plum {
+    border-right-color: plum; }
+    
+    .border-right-color-powderblue {
+    border-right-color: powderblue; }
+    
+    .border-right-color-purple {
+    border-right-color: purple; }
+    
+    .border-right-color-rebeccapurple {
+    border-right-color: rebeccapurple; }
+    
+    .border-right-color-red {
+    border-right-color: red; }
+    
+    .border-right-color-rosybrown {
+    border-right-color: rosybrown; }
+    
+    .border-right-color-royalblue {
+    border-right-color: royalblue; }
+    
+    .border-right-color-saddlebrown {
+    border-right-color: saddlebrown; }
+    
+    .border-right-color-salmon {
+    border-right-color: salmon; }
+    
+    .border-right-color-sandybrown {
+    border-right-color: sandybrown; }
+    
+    .border-right-color-seagreen {
+    border-right-color: seagreen; }
+    
+    .border-right-color-seashell {
+    border-right-color: seashell; }
+    
+    .border-right-color-sienna {
+    border-right-color: sienna; }
+    
+    .border-right-color-silver {
+    border-right-color: silver; }
+    
+    .border-right-color-skyblue {
+    border-right-color: skyblue; }
+    
+    .border-right-color-slateblue {
+    border-right-color: slateblue; }
+    
+    .border-right-color-slategray {
+    border-right-color: slategray; }
+    
+    .border-right-color-slategrey {
+    border-right-color: slategrey; }
+    
+    .border-right-color-snow {
+    border-right-color: snow; }
+    
+    .border-right-color-springgreen {
+    border-right-color: springgreen; }
+    
+    .border-right-color-steelblue {
+    border-right-color: steelblue; }
+    
+    .border-right-color-tan {
+    border-right-color: tan; }
+    
+    .border-right-color-teal {
+    border-right-color: teal; }
+    
+    .border-right-color-thistle {
+    border-right-color: thistle; }
+    
+    .border-right-color-tomato {
+    border-right-color: tomato; }
+    
+    .border-right-color-turquoise {
+    border-right-color: turquoise; }
+    
+    .border-right-color-violet {
+    border-right-color: violet; }
+    
+    .border-right-color-wheat {
+    border-right-color: wheat; }
+    
+    .border-right-color-white {
+    border-right-color: white; }
+    
+    .border-right-color-whitesmoke {
+    border-right-color: whitesmoke; }
+    
+    .border-right-color-yellow {
+    border-right-color: yellow; }
+    
+    .border-right-color-yellowgreen {
+    border-right-color: yellowgreen; }
+    
+    
+    .border-bottom-color-aliceblue {
+    border-bottom-color: aliceblue; }
+    
+    .border-bottom-color-antiquewhite {
+    border-bottom-color: antiquewhite;
+    }
+    
+    .border-bottom-color-aqua {
+    border-bottom-color: aqua; }
+    
+    .border-bottom-color-aquamarine {
+    border-bottom-color: aquamarine; }
+    
+    .border-bottom-color-azure {
+    border-bottom-color: azure; }
+    
+    .border-bottom-color-beige {
+    border-bottom-color: beige; }
+    
+    .border-bottom-color-bisque {
+    border-bottom-color: bisque; }
+    
+    .border-bottom-color-black {
+    border-bottom-color: black; }
+    
+    .border-bottom-color-blanchedalmond {
+    border-bottom-color: blanchedalmond; }
+    
+    .border-bottom-color-blue {
+    border-bottom-color: blue; }
+    
+    .border-bottom-color-blueviolet {
+    border-bottom-color: blueviolet; }
+    
+    .border-bottom-color-brown {
+    border-bottom-color: brown; }
+    
+    .border-bottom-color-burlywood {
+    border-bottom-color: burlywood; }
+    
+    .border-bottom-color-cadetblue {
+    border-bottom-color: cadetblue; }
+    
+    .border-bottom-color-chartreuse {
+    border-bottom-color: chartreuse; }
+    
+    .border-bottom-color-chocolate {
+    border-bottom-color: chocolate; }
+    
+    .border-bottom-color-coral {
+    border-bottom-color: coral; }
+    
+    .border-bottom-color-cornflowerblue {
+    border-bottom-color: cornflowerblue; }
+    
+    .border-bottom-color-cornsilk {
+    border-bottom-color: cornsilk; }
+    
+    .border-bottom-color-crimson {
+    border-bottom-color: crimson; }
+    
+    .border-bottom-color-cyan {
+    border-bottom-color: cyan; }
+    
+    .border-bottom-color-darkblue {
+    border-bottom-color: darkblue; }
+    
+    .border-bottom-color-darkgoldenrod {
+    border-bottom-color: darkgoldenrod; }
+    
+    .border-bottom-color-darkgreen {
+    border-bottom-color: darkgreen; }
+    
+    .border-bottom-color-darkgrey {
+    border-bottom-color: darkgrey; }
+    
+    .border-bottom-color-darkgray {
+    border-bottom-color: darkgray; }
+    
+    .border-bottom-color-darkcyan {
+    border-bottom-color: darkcyan; }
+    
+    .border-bottom-color-darkkhaki {
+    border-bottom-color: darkkhaki; }
+    
+    .border-bottom-color-darkmagenta {
+    border-bottom-color: darkmagenta; }
+    
+    .border-bottom-color-darkolivegreen {
+    border-bottom-color: darkolivegreen; }
+    
+    .border-bottom-color-darkorange {
+    border-bottom-color: darkorange; }
+    
+    .border-bottom-color-darkorchid {
+    border-bottom-color: darkorchid; }
+    
+    .border-bottom-color-darkred {
+    border-bottom-color: darkred; }
+    
+    .border-bottom-color-darksalmon {
+    border-bottom-color: darksalmon; }
+    
+    .border-bottom-color-darkseagreen {
+    border-bottom-color: darkseagreen; }
+    
+    .border-bottom-color-darkslateblue {
+    border-bottom-color: darkslateblue; }
+    
+    .border-bottom-color-darkslategray {
+    border-bottom-color: darkslategray; }
+    
+    .border-bottom-color-darkslategrey {
+    border-bottom-color: darkslategrey; }
+    
+    .border-bottom-color-darkturquoise {
+    border-bottom-color: darkturquoise; }
+    
+    .border-bottom-color-darkviolet {
+    border-bottom-color: darkviolet; }
+    
+    .border-bottom-color-deeppink {
+    border-bottom-color: deeppink; }
+    
+    .border-bottom-color-deepskyblue {
+    border-bottom-color: deepskyblue; }
+    
+    .border-bottom-color-dimgray {
+    border-bottom-color: dimgray; }
+    
+    .border-bottom-color-dimgrey {
+    border-bottom-color: dimgrey; }
+    
+    .border-bottom-color-dodgerblue {
+    border-bottom-color: dodgerblue; }
+    
+    .border-bottom-color-firebrick {
+    border-bottom-color: firebrick; }
+    
+    .border-bottom-color-floralwhite {
+    border-bottom-color: floralwhite; }
+    
+    .border-bottom-color-forestgreen {
+    border-bottom-color: forestgreen; }
+    
+    .border-bottom-color-fuchsia {
+    border-bottom-color: fuchsia; }
+    
+    .border-bottom-color-gainsboro {
+    border-bottom-color: gainsboro; }
+    
+    .border-bottom-color-ghostwhite {
+    border-bottom-color: ghostwhite; }
+    
+    .border-bottom-color-gold {
+    border-bottom-color: gold; }
+    
+    .border-bottom-color-goldenrod {
+    border-bottom-color: goldenrod; }
+    
+    .border-bottom-color-gray {
+    border-bottom-color: gray; }
+    
+    .border-bottom-color-grey {
+    border-bottom-color: grey; }
+    
+    .border-bottom-color-green {
+    border-bottom-color: green; }
+    
+    .border-bottom-color-greenyellow {
+    border-bottom-color: greenyellow; }
+    
+    .border-bottom-color-honeydew {
+    border-bottom-color: honeydew; }
+    
+    .border-bottom-color-hotpink {
+    border-bottom-color: hotpink; }
+    
+    .border-bottom-color-indianred {
+    border-bottom-color: indianred; }
+    
+    .border-bottom-color-indigo {
+    border-bottom-color: indigo; }
+    
+    .border-bottom-color-ivory {
+    border-bottom-color: ivory; }
+    
+    .border-bottom-color-khaki {
+    border-bottom-color: khaki; }
+    
+    .border-bottom-color-lavender {
+    border-bottom-color: lavender; }
+    
+    .border-bottom-color-lavenderblush {
+    border-bottom-color: lavenderblush; }
+    
+    .border-bottom-color-lawngreen {
+    border-bottom-color: lawngreen; }
+    
+    .border-bottom-color-lemonchiffon {
+    border-bottom-color: lemonchiffon; }
+    
+    .border-bottom-color-lightblue {
+    border-bottom-color: lightblue; }
+    
+    .border-bottom-color-lightcoral {
+    border-bottom-color: lightcoral; }
+    
+    .border-bottom-color-lightcyan {
+    border-bottom-color: lightcyan; }
+    
+    .border-bottom-color-lightgoldenrodyellow {
+    border-bottom-color: lightgoldenrodyellow; }
+    
+    .border-bottom-color-lightgray {
+    border-bottom-color: lightgray; }
+    
+    .border-bottom-color-lightgrey {
+    border-bottom-color: lightgrey; }
+    
+    .border-bottom-color-lightgreen {
+    border-bottom-color: lightgreen; }
+    
+    .border-bottom-color-lightpink {
+    border-bottom-color: lightpink; }
+    
+    .border-bottom-color-lightsalmon {
+    border-bottom-color: lightsalmon; }
+    
+    .border-bottom-color-lightseagreen {
+    border-bottom-color: lightseagreen; }
+    
+    .border-bottom-color-lightskyblue {
+    border-bottom-color: lightskyblue; }
+    
+    .border-bottom-color-lightslategray {
+    border-bottom-color: lightslategray; }
+    
+    .border-bottom-color-lightslategrey {
+    border-bottom-color: lightslategrey; }
+    
+    .border-bottom-color-lightsteelblue {
+    border-bottom-color: lightsteelblue; }
+    
+    .border-bottom-color-lightyellow {
+    border-bottom-color: lightyellow; }
+    
+    .border-bottom-color-lime {
+    border-bottom-color: lime; }
+    
+    .border-bottom-color-limegreen {
+    border-bottom-color: limegreen; }
+    
+    .border-bottom-color-linen {
+    border-bottom-color: linen; }
+    
+    .border-bottom-color-magenta {
+    border-bottom-color: magenta; }
+    
+    .border-bottom-color-maroon {
+    border-bottom-color: maroon; }
+    
+    .border-bottom-color-mediumaquamarine {
+    border-bottom-color: mediumaquamarine; }
+    
+    .border-bottom-color-mediumblue {
+    border-bottom-color: mediumblue; }
+    
+    .border-bottom-color-mediumorchid {
+    border-bottom-color: mediumorchid; }
+    
+    .border-bottom-color-mediumpurple {
+    border-bottom-color: mediumpurple; }
+    
+    .border-bottom-color-mediumseagreen {
+    border-bottom-color: mediumseagreen; }
+    
+    .border-bottom-color-mediumslateblue {
+    border-bottom-color: mediumslateblue; }
+    
+    .border-bottom-color-mediumspringgreen {
+    border-bottom-color: mediumspringgreen; }
+    
+    .border-bottom-color-mediumturquoise {
+    border-bottom-color: mediumturquoise; }
+    
+    .border-bottom-color-mediumvioletred {
+    border-bottom-color: mediumvioletred; }
+    
+    .border-bottom-color-midnightblue {
+    border-bottom-color: midnightblue; }
+    
+    .border-bottom-color-mintcream {
+    border-bottom-color: mintcream; }
+    
+    .border-bottom-color-mistyrose {
+    border-bottom-color: mistyrose; }
+    
+    .border-bottom-color-moccasin {
+    border-bottom-color: moccasin; }
+    
+    .border-bottom-color-navajowhite {
+    border-bottom-color: navajowhite; }
+    
+    .border-bottom-color-navy {
+    border-bottom-color: navy; }
+    
+    .border-bottom-color-oldlace {
+    border-bottom-color: oldlace; }
+    
+    .border-bottom-color-olive {
+    border-bottom-color: olive; }
+    
+    .border-bottom-color-olivedrab {
+    border-bottom-color: olivedrab; }
+    
+    .border-bottom-color-orange {
+    border-bottom-color: orange; }
+    
+    .border-bottom-color-orangered {
+    border-bottom-color: orangered; }
+    
+    .border-bottom-color-orchid {
+    border-bottom-color: orchid; }
+    
+    .border-bottom-color-palegoldenrod {
+    border-bottom-color: palegoldenrod; }
+    
+    .border-bottom-color-palegreen {
+    border-bottom-color: palegreen; }
+    
+    .border-bottom-color-paleturquoise {
+    border-bottom-color: paleturquoise; }
+    
+    .border-bottom-color-palevioletred {
+    border-bottom-color: palevioletred; }
+    
+    .border-bottom-color-papayawhip {
+    border-bottom-color: papayawhip; }
+    
+    .border-bottom-color-peachpuff {
+    border-bottom-color: peachpuff; }
+    
+    .border-bottom-color-peru {
+    border-bottom-color: peru; }
+    
+    .border-bottom-color-pink {
+    border-bottom-color: pink; }
+    
+    .border-bottom-color-plum {
+    border-bottom-color: plum; }
+    
+    .border-bottom-color-powderblue {
+    border-bottom-color: powderblue; }
+    
+    .border-bottom-color-purple {
+    border-bottom-color: purple; }
+    
+    .border-bottom-color-rebeccapurple {
+    border-bottom-color: rebeccapurple; }
+    
+    .border-bottom-color-red {
+    border-bottom-color: red; }
+    
+    .border-bottom-color-rosybrown {
+    border-bottom-color: rosybrown; }
+    
+    .border-bottom-color-royalblue {
+    border-bottom-color: royalblue; }
+    
+    .border-bottom-color-saddlebrown {
+    border-bottom-color: saddlebrown; }
+    
+    .border-bottom-color-salmon {
+    border-bottom-color: salmon; }
+    
+    .border-bottom-color-sandybrown {
+    border-bottom-color: sandybrown; }
+    
+    .border-bottom-color-seagreen {
+    border-bottom-color: seagreen; }
+    
+    .border-bottom-color-seashell {
+    border-bottom-color: seashell; }
+    
+    .border-bottom-color-sienna {
+    border-bottom-color: sienna; }
+    
+    .border-bottom-color-silver {
+    border-bottom-color: silver; }
+    
+    .border-bottom-color-skyblue {
+    border-bottom-color: skyblue; }
+    
+    .border-bottom-color-slateblue {
+    border-bottom-color: slateblue; }
+    
+    .border-bottom-color-slategray {
+    border-bottom-color: slategray; }
+    
+    .border-bottom-color-slategrey {
+    border-bottom-color: slategrey; }
+    
+    .border-bottom-color-snow {
+    border-bottom-color: snow; }
+    
+    .border-bottom-color-springgreen {
+    border-bottom-color: springgreen; }
+    
+    .border-bottom-color-steelblue {
+    border-bottom-color: steelblue; }
+    
+    .border-bottom-color-tan {
+    border-bottom-color: tan; }
+    
+    .border-bottom-color-teal {
+    border-bottom-color: teal; }
+    
+    .border-bottom-color-thistle {
+    border-bottom-color: thistle; }
+    
+    .border-bottom-color-tomato {
+    border-bottom-color: tomato; }
+    
+    .border-bottom-color-turquoise {
+    border-bottom-color: turquoise; }
+    
+    .border-bottom-color-violet {
+    border-bottom-color: violet; }
+    
+    .border-bottom-color-wheat {
+    border-bottom-color: wheat; }
+    
+    .border-bottom-color-white {
+    border-bottom-color: white; }
+    
+    .border-bottom-color-whitesmoke {
+    border-bottom-color: whitesmoke; }
+    
+    .border-bottom-color-yellow {
+    border-bottom-color: yellow; }
+    
+    .border-bottom-color-yellowgreen {
+    border-bottom-color: yellowgreen; }
+    
+    .border-left-color-aliceblue {
+    border-left-color: aliceblue; }
+    
+    .border-left-color-antiquewhite {
+        border-left-color: antiquewhite;
+    }
+    
+    .border-left-color-aqua {
+    border-left-color: aqua; }
+    
+    .border-left-color-aquamarine {
+    border-left-color: aquamarine; }
+    
+    .border-left-color-azure {
+    border-left-color: azure; }
+    
+    .border-left-color-beige {
+    border-left-color: beige; }
+    
+    .border-left-color-bisque {
+    border-left-color: bisque; }
+    
+    .border-left-color-black {
+    border-left-color: black; }
+    
+    .border-left-color-blanchedalmond {
+    border-left-color: blanchedalmond; }
+    
+    .border-left-color-blue {
+    border-left-color: blue; }
+    
+    .border-left-color-blueviolet {
+    border-left-color: blueviolet; }
+    
+    .border-left-color-brown {
+    border-left-color: brown; }
+    
+    .border-left-color-burlywood {
+    border-left-color: burlywood; }
+    
+    .border-left-color-cadetblue {
+    border-left-color: cadetblue; }
+    
+    .border-left-color-chartreuse {
+    border-left-color: chartreuse; }
+    
+    .border-left-color-chocolate {
+    border-left-color: chocolate; }
+    
+    .border-left-color-coral {
+    border-left-color: coral; }
+    
+    .border-left-color-cornflowerblue {
+    border-left-color: cornflowerblue; }
+    
+    .border-left-color-cornsilk {
+    border-left-color: cornsilk; }
+    
+    .border-left-color-crimson {
+    border-left-color: crimson; }
+    
+    .border-left-color-cyan {
+    border-left-color: cyan; }
+    
+    .border-left-color-darkblue {
+    border-left-color: darkblue; }
+    
+    .border-left-color-darkgoldenrod {
+    border-left-color: darkgoldenrod; }
+    
+    .border-left-color-darkgreen {
+    border-left-color: darkgreen; }
+    
+    .border-left-color-darkgrey {
+    border-left-color: darkgrey; }
+    
+    .border-left-color-darkgray {
+    border-left-color: darkgray; }
+    
+    .border-left-color-darkcyan {
+    border-left-color: darkcyan; }
+    
+    .border-left-color-darkkhaki {
+    border-left-color: darkkhaki; }
+    
+    .border-left-color-darkmagenta {
+    border-left-color: darkmagenta; }
+    
+    .border-left-color-darkolivegreen {
+    border-left-color: darkolivegreen; }
+    
+    .border-left-color-darkorange {
+    border-left-color: darkorange; }
+    
+    .border-left-color-darkorchid {
+    border-left-color: darkorchid; }
+    
+    .border-left-color-darkred {
+    border-left-color: darkred; }
+    
+    .border-left-color-darksalmon {
+    border-left-color: darksalmon; }
+    
+    .border-left-color-darkseagreen {
+    border-left-color: darkseagreen; }
+    
+    .border-left-color-darkslateblue {
+    border-left-color: darkslateblue; }
+    
+    .border-left-color-darkslategray {
+    border-left-color: darkslategray; }
+    
+    .border-left-color-darkslategrey {
+    border-left-color: darkslategrey; }
+    
+    .border-left-color-darkturquoise {
+    border-left-color: darkturquoise; }
+    
+    .border-left-color-darkviolet {
+    border-left-color: darkviolet; }
+    
+    .border-left-color-deeppink {
+    border-left-color: deeppink; }
+    
+    .border-left-color-deepskyblue {
+    border-left-color: deepskyblue; }
+    
+    .border-left-color-dimgray {
+    border-left-color: dimgray; }
+    
+    .border-left-color-dimgrey {
+    border-left-color: dimgrey; }
+    
+    .border-left-color-dodgerblue {
+    border-left-color: dodgerblue; }
+    
+    .border-left-color-firebrick {
+    border-left-color: firebrick; }
+    
+    .border-left-color-floralwhite {
+    border-left-color: floralwhite; }
+    
+    .border-left-color-forestgreen {
+    border-left-color: forestgreen; }
+    
+    .border-left-color-fuchsia {
+    border-left-color: fuchsia; }
+    
+    .border-left-color-gainsboro {
+    border-left-color: gainsboro; }
+    
+    .border-left-color-ghostwhite {
+    border-left-color: ghostwhite; }
+    
+    .border-left-color-gold {
+    border-left-color: gold; }
+    
+    .border-left-color-goldenrod {
+    border-left-color: goldenrod; }
+    
+    .border-left-color-gray {
+    border-left-color: gray; }
+    
+    .border-left-color-grey {
+    border-left-color: grey; }
+    
+    .border-left-color-green {
+    border-left-color: green; }
+    
+    .border-left-color-greenyellow {
+    border-left-color: greenyellow; }
+    
+    .border-left-color-honeydew {
+    border-left-color: honeydew; }
+    
+    .border-left-color-hotpink {
+    border-left-color: hotpink; }
+    
+    .border-left-color-indianred {
+    border-left-color: indianred; }
+    
+    .border-left-color-indigo {
+    border-left-color: indigo; }
+    
+    .border-left-color-ivory {
+    border-left-color: ivory; }
+    
+    .border-left-color-khaki {
+    border-left-color: khaki; }
+    
+    .border-left-color-lavender {
+    border-left-color: lavender; }
+    
+    .border-left-color-lavenderblush {
+    border-left-color: lavenderblush; }
+    
+    .border-left-color-lawngreen {
+    border-left-color: lawngreen; }
+    
+    .border-left-color-lemonchiffon {
+    border-left-color: lemonchiffon; }
+    
+    .border-left-color-lightblue {
+    border-left-color: lightblue; }
+    
+    .border-left-color-lightcoral {
+    border-left-color: lightcoral; }
+    
+    .border-left-color-lightcyan {
+    border-left-color: lightcyan; }
+    
+    .border-left-color-lightgoldenrodyellow {
+    border-left-color: lightgoldenrodyellow; }
+    
+    .border-left-color-lightgray {
+    border-left-color: lightgray; }
+    
+    .border-left-color-lightgrey {
+    border-left-color: lightgrey; }
+    
+    .border-left-color-lightgreen {
+    border-left-color: lightgreen; }
+    
+    .border-left-color-lightpink {
+    border-left-color: lightpink; }
+    
+    .border-left-color-lightsalmon {
+    border-left-color: lightsalmon; }
+    
+    .border-left-color-lightseagreen {
+    border-left-color: lightseagreen; }
+    
+    .border-left-color-lightskyblue {
+    border-left-color: lightskyblue; }
+    
+    .border-left-color-lightslategray {
+    border-left-color: lightslategray; }
+    
+    .border-left-color-lightslategrey {
+    border-left-color: lightslategrey; }
+    
+    .border-left-color-lightsteelblue {
+    border-left-color: lightsteelblue; }
+    
+    .border-left-color-lightyellow {
+    border-left-color: lightyellow; }
+    
+    .border-left-color-lime {
+    border-left-color: lime; }
+    
+    .border-left-color-limegreen {
+    border-left-color: limegreen; }
+    
+    .border-left-color-linen {
+    border-left-color: linen; }
+    
+    .border-left-color-magenta {
+    border-left-color: magenta; }
+    
+    .border-left-color-maroon {
+    border-left-color: maroon; }
+    
+    .border-left-color-mediumaquamarine {
+    border-left-color: mediumaquamarine; }
+    
+    .border-left-color-mediumblue {
+    border-left-color: mediumblue; }
+    
+    .border-left-color-mediumorchid {
+    border-left-color: mediumorchid; }
+    
+    .border-left-color-mediumpurple {
+    border-left-color: mediumpurple; }
+    
+    .border-left-color-mediumseagreen {
+    border-left-color: mediumseagreen; }
+    
+    .border-left-color-mediumslateblue {
+    border-left-color: mediumslateblue; }
+    
+    .border-left-color-mediumspringgreen {
+    border-left-color: mediumspringgreen; }
+    
+    .border-left-color-mediumturquoise {
+    border-left-color: mediumturquoise; }
+    
+    .border-left-color-mediumvioletred {
+    border-left-color: mediumvioletred; }
+    
+    .border-left-color-midnightblue {
+    border-left-color: midnightblue; }
+    
+    .border-left-color-mintcream {
+    border-left-color: mintcream; }
+    
+    .border-left-color-mistyrose {
+    border-left-color: mistyrose; }
+    
+    .border-left-color-moccasin {
+    border-left-color: moccasin; }
+    
+    .border-left-color-navajowhite {
+    border-left-color: navajowhite; }
+    
+    .border-left-color-navy {
+    border-left-color: navy; }
+    
+    .border-left-color-oldlace {
+    border-left-color: oldlace; }
+    
+    .border-left-color-olive {
+    border-left-color: olive; }
+    
+    .border-left-color-olivedrab {
+    border-left-color: olivedrab; }
+    
+    .border-left-color-orange {
+    border-left-color: orange; }
+    
+    .border-left-color-orangered {
+    border-left-color: orangered; }
+    
+    .border-left-color-orchid {
+    border-left-color: orchid; }
+    
+    .border-left-color-palegoldenrod {
+    border-left-color: palegoldenrod; }
+    
+    .border-left-color-palegreen {
+    border-left-color: palegreen; }
+    
+    .border-left-color-paleturquoise {
+    border-left-color: paleturquoise; }
+    
+    .border-left-color-palevioletred {
+    border-left-color: palevioletred; }
+    
+    .border-left-color-papayawhip {
+    border-left-color: papayawhip; }
+    
+    .border-left-color-peachpuff {
+    border-left-color: peachpuff; }
+    
+    .border-left-color-peru {
+    border-left-color: peru; }
+    
+    .border-left-color-pink {
+    border-left-color: pink; }
+    
+    .border-left-color-plum {
+    border-left-color: plum; }
+    
+    .border-left-color-powderblue {
+    border-left-color: powderblue; }
+    
+    .border-left-color-purple {
+    border-left-color: purple; }
+    
+    .border-left-color-rebeccapurple {
+    border-left-color: rebeccapurple; }
+    
+    .border-left-color-red {
+    border-left-color: red; }
+    
+    .border-left-color-rosybrown {
+    border-left-color: rosybrown; }
+    
+    .border-left-color-royalblue {
+    border-left-color: royalblue; }
+    
+    .border-left-color-saddlebrown {
+    border-left-color: saddlebrown; }
+    
+    .border-left-color-salmon {
+    border-left-color: salmon; }
+    
+    .border-left-color-sandybrown {
+    border-left-color: sandybrown; }
+    
+    .border-left-color-seagreen {
+    border-left-color: seagreen; }
+    
+    .border-left-color-seashell {
+    border-left-color: seashell; }
+    
+    .border-left-color-sienna {
+    border-left-color: sienna; }
+    
+    .border-left-color-silver {
+    border-left-color: silver; }
+    
+    .border-left-color-skyblue {
+    border-left-color: skyblue; }
+    
+    .border-left-color-slateblue {
+    border-left-color: slateblue; }
+    
+    .border-left-color-slategray {
+    border-left-color: slategray; }
+    
+    .border-left-color-slategrey {
+    border-left-color: slategrey; }
+    
+    .border-left-color-snow {
+    border-left-color: snow; }
+    
+    .border-left-color-springgreen {
+    border-left-color: springgreen; }
+    
+    .border-left-color-steelblue {
+    border-left-color: steelblue; }
+    
+    .border-left-color-tan {
+    border-left-color: tan; }
+    
+    .border-left-color-teal {
+    border-left-color: teal; }
+    
+    .border-left-color-thistle {
+    border-left-color: thistle; }
+    
+    .border-left-color-tomato {
+    border-left-color: tomato; }
+    
+    .border-left-color-turquoise {
+    border-left-color: turquoise; }
+    
+    .border-left-color-violet {
+    border-left-color: violet; }
+    
+    .border-left-color-wheat {
+    border-left-color: wheat; }
+    
+    .border-left-color-white {
+    border-left-color: white; }
+    
+    .border-left-color-whitesmoke {
+    border-left-color: whitesmoke; }
+    
+    .border-left-color-yellow {
+    border-left-color: yellow; }
+    
+    .border-left-color-yellowgreen {
+    border-left-color: yellowgreen; }

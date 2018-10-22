@@ -1,0 +1,233 @@
+// #########################################################
+// 3. element's size, margins, and padding
+// #########################################################
+/* 
+width: 
+min-width:
+max-width: 
+height: 
+min-height:
+max-height:
+*/
+
+// width wX, min-width minwX, max-width maxwX, height hX, min-height minhX, max-height maxhX, 
+// in increments of 1
+@mixin componentContainerSize {
+    // in Pixels:
+    @for $i from 1 through 100 {
+        $val: #{$i}unquote("px");
+        .width#{$i} {
+            width: $val;
+        }
+        .min-width#{$i}{
+            min-width: $val;
+        }
+        .max-width#{$i} {
+            max-width: $val;
+        }
+        .height#{$i} {
+            height: $val;
+        }
+        .min-height#{$i} {
+            min-height: $val;
+        }
+        .max-height#{$i} {
+            max-height: $val;
+        }
+    }
+    @for $i from 10 through 192 {
+      $val1: #{$i}unquote("0");
+      $val2: #{$i}unquote("0px");
+      .width#{$val1} {
+        width: $val2;
+      }
+      .min-width#{$val1}{
+            min-width: $val2;
+        }
+        .max-width#{$val1} {
+            max-width: $val2;
+        }
+        .height#{$val1} {
+            height: $val2;
+        }
+        .min-height#{$val1} {
+            min-height: $val2;
+        }
+        .max-height#{$val1} {
+            max-height: $val2;
+        }
+    }
+    @for $i from 1 through 100 {
+        // In viewport widths:
+        .width#{$i}vw {
+            width: #{$i}vw;
+        }
+        .min-width#{$i}vw {
+            min-width: #{$i}vw;
+        }
+        .max-width#{$i}vw {
+            max-width: #{$i}vw;
+        }
+        .height#{$i}vh {
+            height: #{$i}vh;
+        }
+        .min-height#{$i}vh {
+            min-height: #{$i}vh;
+        }
+        .max-height#{$i}vh {
+            max-height: #{$i}vh;
+        }
+    }
+    // In percentages
+    @for $i from 1 through 100 {
+        .width#{$i}p {
+            width: unquote("#{$i}%");
+        }
+        .min-width#{$i}p {
+            min-width: unquote("#{$i}%");
+        }
+        .max-width#{$i}p {
+            max-width: unquote("#{$i}%");
+        }
+        .height#{$i}p {
+            height: unquote("#{$i}%");
+        }
+        .min-height#{$i}p {
+            min-height: unquote("#{$i}%");
+        }
+        .max-height#{$i}p {
+            max-height: unquote("#{$i}%");
+        }
+    }
+    // In rems:
+    @for $i from 1 through 120 {
+        .width#{$i}rem {
+            width:  #{$i}rem;
+        }
+        .min-width#{$i}rem {
+            min-width: #{$i}rem;
+        }
+        .max-width#{$i}rem {
+            max-width: #{$i}rem;
+        }
+        .height#{$i}rem {
+            height: #{$i}rem;
+        }
+        .min-height#{$i}rem {
+            min-height: #{$i}rem;
+        }
+        .max-height#{$i}rem {
+            max-height: #{$i}rem;
+        }
+    }
+}
+
+// width wX, min-width minwX, max-width maxwX, height hX, min-height minhX, max-height maxhX, 
+// in increments of 1
+// in px, %, vw, vh, rems, and ems
+@include componentContainerSize;
+
+
+
+@mixin margins($type, $side) {
+    @for $i from -192 through 192 {
+      $val: #{$i}unquote("0px");
+      #{$type}-#{$side}#{$val} {
+        @if $i < -10 or $i > 10 {
+          @if $type == 'margin' {
+            @if $side == 'top' {
+              margin-top: $val;
+            } @else if $side == 'right' {
+              margin-right: $val;
+            } @else if $side == 'bottom' {
+              margin-bottom: $val;
+            } @else if $side == 'left' {
+              margin-left: $val;
+            }
+          } //@if type margin
+        } //@if $i less then -10 and gt 10
+      } //#{$type}-#{$side}#{$i}
+    } //@for $i from -192 to 192
+    @for $i from -100 through 100 {
+      #{$type}-#{$side}#{$i} {
+        $val: #{$i}unquote("px");
+        @if $type == 'margin' {
+            @if $side == 'top' {
+              margin-top: $val;
+        } @else if $side == 'right' {
+              margin-right: $val;
+        } @else if $side == 'bottom' {
+              margin-bottom: $val;
+        } @else if $side == 'left' {
+              margin-left: $val;
+            }
+          } //@if type margin
+        } //@if $i less then -10 and gt 10
+      } //#{$type}-#{$side}#{$i}   
+}
+@include margins(margin, top);
+@include margins(margin, right);
+@include margins(margin, bottom);
+@include margins(margin, left);
+
+@mixin paddings($type, $side) {
+    @for $i from 10 through 192 {
+      $val: #{$i}unquote("0px");
+      #{$type}-#{$side}#{$val} {
+        @if $i $i > 10 {
+          @if $type == 'padding' {
+            @if $side == 'top' {
+              margin-top: $val;
+            } @else if $side == 'right' {
+              margin-right: $val;
+            } @else if $side == 'bottom' {
+              margin-bottom: $val;
+            } @else if $side == 'left' {
+              margin-left: $val;
+            }
+          } //@if type padding
+        } //@if $i less then -10 and gt 10
+      } //#{$type}-#{$side}#{$i}
+    } //@for $i from -192 to 192
+    @for $i from 0 through 99 {
+      $val: #{$i}unquote("px");
+      #{$type}-#{$side}#{$val} {
+        @if $type == 'padding' {
+            @if $side == 'top' {
+              padding-top: $val;
+        } @else if $side == 'right' {
+              padding-right: $val;
+        } @else if $side == 'bottom' {
+              padding-bottom: $val;
+        } @else if $side == 'left' {
+              padding-left: $val;
+            }
+          } //@if type margin
+        } //@if $i less then -10 and gt 10
+      } //#{$type}-#{$side}#{$i}   
+}
+@include paddings(padding, top);
+@include paddings(padding, right);
+@include paddings(padding, bottom);
+@include paddings(padding, left);
+
+// padding pX (all sides)
+@mixin marginsAndPaddings2 {
+    @for $i from 1 through 192 {
+        $val: #{$i}unquote("0px");
+        $val2: #{$i}unquote("0");
+        .padding#{$val2} {
+            padding: #{$val} #{$val} #{$val} #{$val};
+        }
+    }
+    @for $i from -192 through 192 {
+        $val: #{$i}unquote("0px");
+        $val2: #{$i}unquote("0");        
+        .margin#{$val2} {
+            margin: #{$val};
+        }
+    }
+}
+
+// padding pX (all sides), margin mX (all sides)
+@include marginsAndPaddings2;

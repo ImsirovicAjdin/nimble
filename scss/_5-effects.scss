@@ -1,0 +1,88 @@
+// #########################################################
+// 5. effects (visibility, opacity, box-shadows, etc )
+// #########################################################
+
+// visibility
+.visibility-collapse {
+    visibility: collapse;
+}
+.visibility-hidden {
+    visibility: hidden;
+}
+.visibility-inherit {
+    visibility: inherit;
+}
+.visibility-initial {
+    visibility: initial;
+}
+.visibility-unset {
+    visibility: unset;
+}
+.visibility-visible {
+    visibility: visible;
+}
+
+
+// <div class="shadow0 shadow1">
+.shadow0 {
+    box-shadow: 0 1px 1px 1px rgba(0,0,0,0.1)!important;
+    transition: all 1s;
+}
+.shadow0:hover {
+    box-shadow: 0 1px 1px 1px rgba(0,0,0,0.25)!important;
+}
+.shadow1 {
+    box-shadow: 0 9px 20px 2px rgba(0,0,0,0.1)!important;
+}
+.shadow2 {
+    box-shadow: 0 9px 20px 2px rgba(0,0,0,0.05)!important;
+}
+.shadow3 {
+    box-shadow: 0 9px 20px 2px rgba(0,0,0,0.3)!important;
+}
+
+/* Global box-shadow keywords */
+.box-shadow-inherit {
+    box-shadow: inherit;
+}
+.box-shadow-initial {
+    box-shadow: initial;
+}
+.box-shadow-unset {
+    box-shadow: unset;
+}
+
+//@mixin opacity1to100 {
+//    @for $i from 1 through 100 {
+//        @if ( $i < 10 ) {
+//          .opacity00#{$i} {
+//            opacity: $i * 1/100;
+//          }
+//        } 
+//        @if ($i >= 10) {
+//          .opacity0#{$i} {
+//            opacity: $i * 1/100;
+//          }
+//        }
+//      }
+//    }
+//@include opacity1to100();
+
+@mixin opacity {
+    @for $i from 0 through 100 {
+        @if $i < 10 {
+            .opacity00#{$i} {
+                opacity: unquote("0.0")#{$i}px;
+            }
+        } @else if $i > 9 and $i < 100 {
+            .opacity0#{$i} {
+                opacity: unquote("0.")#{$i}px;
+            }
+        } @else {
+            .opacity#{$i} {
+                    opacity: #{$i}px;
+                }
+            }            
+        }
+    }
+@include opacity;

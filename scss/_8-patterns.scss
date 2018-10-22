@@ -1,0 +1,67 @@
+/* #########################################################*/
+// CONCEPTS AND IDEAS BORROWED FROM
+// https://csswizardry.com/2014/03/naming-ui-components-in-oocss/
+
+// when you have 'cherry-picked' specific classes for your layout,
+// here is where you combine them
+// for example:
+/*
+.example-container1 {
+    @extend .display-block;
+    @extend .overflow-auto;
+    @extend .cc-h200;
+    @extend .cc-w200;
+    @extend .u-p20;
+    @extend .u-m20;
+    @extend .background-color-yellow;
+    @extend .ctb-r10;
+    @extend .ctb-w3;
+    @extend .cst-fw6;
+    @extend .cst-ffv;
+}
+
+.example-container2 {
+    @extend .example-container1;
+    @extend .background-color-blue;
+    @extend .color-white;
+}
+.box {
+    @extend .cc-h10;
+    @extend .background-gray;
+    @extend .border-color-red;
+}
+.box1 {
+    @extend .cc-h70;
+    @extend .background-wheat;
+}
+.box2 {
+    @extend .cc-h50;
+    @extend .background-tomato;
+}
+*/
+ 
+// PATTERNS FOR TESTING
+._0 {
+    @extend .position-relative;
+    @extend .display-block;
+    @extend .top100;
+    @extend .right100;
+}
+._1 {
+    @extend .position-relative;
+    @extend .display-block;
+    @extend .bottom100;
+    @extend .left100;
+}
+._2 {
+    @extend .position-relative;
+    @extend .display-block;
+    @extend .top10p;
+    @extend .right10p;
+}
+._3 {
+    @extend .position-relative;
+    @extend .display-block;
+    @extend .bottom10p;
+    @extend .left10p;
+}

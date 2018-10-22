@@ -1,0 +1,126 @@
+/* #########################################################*/
+/* 4. typography
+.cst - typography: font-size fs0..fs100, font-weight fw1..9, 
+                   font-style fs inh ini uns ita obl, 
+                   font-family ff t g c a tm v i cn, letter-spacing ls-10..10, 
+                   text-tranform tt u l c, text-align ta l r j, 
+                   text-overflow to e
+                   whitespace ws nw, 
+########################################################################*/
+
+// typography: .cst- 
+// fs#, fw#, fsABC, ff#, ls#, ttA, taA, taA, toe, wsnw
+// sides
+// sides
+@mixin fontsize {
+    @for $i from 0 through 400 {
+        .font-size#{$i} {
+            font-size: #{$i}px;
+        }
+    }
+}
+@include fontsize;
+
+@mixin fontweight {
+    $double0: "00";
+    @for $i from 1 through 9 {
+        .font-weight#{$i}#{$double0} {
+            font-weight: $i * 100;
+        }
+    }
+}
+@include fontweight;
+
+// FONT STYLE AND FONT FAMILY
+.font-style-inherit {
+    font-style: inherit;
+}
+.font-style-initial {
+    font-style: initial;
+}
+.font-style-unset {
+    font-style: unset;
+}
+.font-style-italic {
+    font-style: italic;
+}
+.font-style-normal {
+    font-style: normal;
+}
+.font-style-oblique {
+    font-style: oblique;
+}
+.font-family-times-new-roman {
+    font-family: 'Times New Roman', serif;
+}
+.font-family-georgia {
+    font-family: 'Georgia', serif;
+}
+.font-family-cambria {
+    font-family: 'Cambria', serif;
+}
+.font-family-arial {
+    font-family: 'Arial', sans-serif; 
+}
+.font-family-trebuchet-ms {
+    font-family: 'Trebuchet MS', sans-serif;
+}
+.font-family-verdana {
+    font-family: 'Verdana', sans-serif;
+}
+.font-family-impact {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.font-family-courier-new {
+    font-family: 'Courier New', 'Courier', monospace;
+}
+
+@mixin letterspacing {
+    @for $i from -400 through 400 {
+        .letter-spacing#{$i} {
+            //letter-spacing: ($i/100)unquote("px");       
+            letter-spacing: ($i/100)+px;
+        }
+    }
+}
+@include letterspacing;
+
+// TEXT-TRANSFORM
+.text-transform-uppercase {
+    text-transform: uppercase;
+}
+.text-transform-lowercase {
+    text-transform: lowercase;
+}
+.text-transform-capitalize {
+    text-transform: capitalize;
+}
+
+// TEXT-ALIGN
+.text-align-left {
+    text-align: left;
+}
+.text-align-right {
+    text-align: right;
+}    
+.text-align-justify {
+    text-align: justify;
+}
+
+// TEXT-OVERFLOW AND WHITESPACE
+.text-overflow-ellipsis {
+    text-overflow: ellipsis;
+}
+.white-space-nowrap {
+    white-space: nowrap;
+}
+
+// LINE-HEIGHT
+@mixin lineHeight {
+    @for $i from 0 through 100 {
+        .line-height#{$i} {
+            line-height: #{$i}px;
+        }
+    }
+}
+@include lineHeight;
